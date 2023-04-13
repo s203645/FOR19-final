@@ -7,8 +7,8 @@ import os
 application = Flask(__name__)
 
 ### Code GitHub
-# application.config['SECRET_KEY'] = os.environ['SECRET_KEY']  
-# DBVAR = f"postgresql://{os.environ['RDS_USERNAME']}:{os.environ['RDS_PASSWORD']}@{os.environ['RDS_HOSTNAME']}/{os.environ['RDS_DB_NAME']}"
+application.config['SECRET_KEY'] = os.environ['SECRET_KEY']  
+DBVAR = f"postgresql://{os.environ['RDS_USERNAME']}:{os.environ['RDS_PASSWORD']}@{os.environ['RDS_HOSTNAME']}/{os.environ['RDS_DB_NAME']}"
 DBVAR = 'postgresql://postgres:FOR19postgres@awseb-e-w5jetrp9pk-stack-awsebrdsdatabase-uyx5nesvp7xx.cmz3f7khsk6s.eu-north-1.rds.amazonaws.com:5432//ebdb'
 application.config['SQLALCHEMY_DATABASE_URI'] = DBVAR 
 application.config['SQLALCHEMY_BINDS'] ={'transport': DBVAR}
