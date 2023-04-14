@@ -72,7 +72,7 @@ p {
 }
 
 /* Section header_home */
-.section_header_home {
+.section_header {
     background-color: #e7efe5;
 }
 .header_home{
@@ -89,7 +89,6 @@ p {
 
 .home .text{
     text-align: center;
- 
     margin-bottom: -15px;
 }
 
@@ -150,12 +149,12 @@ p {
 
 
 /* Formulas */
-.section_formulas{
+.section_formulas, .section_new_entries {
     background-color: #f4f7f1;
     min-height: 100%;
-    padding: 20px;
     position: relative;
     padding-bottom: calc(100vh - (var(--footer-height)));
+    padding: 20px;
 }
 
 .box-formula{
@@ -179,7 +178,9 @@ p {
 }
 
 /* Buttons Methodology & Carbon app */
-.btn {
+
+
+.btn, .container-buttons_methodology {
     background-color: #628354;
     border-radius: 3px;
     padding: 10px 20px;
@@ -194,13 +195,13 @@ p {
     box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
 }
 
-.btn:hover{
+.btn:hover, .container-buttons_methodology:hover {
     transform: translateY(2px);
     box-shadow: none;
     color: black;
     background-color: #57754b;
 }
-.btn:focus {
+.btn:focus, .container-buttons_methodology:focus {
     background-color: #628354;
     border-radius: 3px;
     padding: 10px 20px;
@@ -348,4 +349,103 @@ input[type="submit"]:hover{
 
 #password_re_div {
     margin-bottom: 20px !important;
+}
+
+
+
+/* Section new entries calculators*/
+.section_carbon_app_new_entry_main {
+    background-color:#f4f7f1;
+  }
+  .carbon_app_new_entry_main {
+    display: grid;  
+    align-items: start;
+    background: #f4f7f1;
+  }
+  .carbon_app_new_entry_main .box {
+    flex: 1;
+    background: #628354;
+    color: black;
+    border-radius: 10px;
+    margin: 20px 10px;
+    padding: 15px 20px;
+    text-align:center;
+    align-items: center;
+    justify-content: center;
+  }
+  .carbon_app_new_entry_main .box:nth-of-type(1) {
+    flex-grow:3;
+  }
+  .carbon_app_new_entry_main .box:nth-of-type(2) {
+    flex-grow:3;
+  }
+  .carbon_app_new_entry_main .box:nth-of-type(3) {
+    flex-grow:3;
+  }
+  .carbon_app_new_entry_main .box:nth-of-type(4) {
+    flex-grow:3;
+  }
+  .section_container_buttons_carbon_app_new_entry_main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap:wrap;
+    padding: 0px 0px;
+    margin: 0px 0px;
+  }
+  .btn_carbon_app_new_entry_main {
+    padding: 10px 10px;
+    margin: 10px 10px 10px 10px;
+    color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 18px;
+    background-color: #628354;
+    border: 2px solid black;
+  }
+  .btn_carbon_app_new_entry_main:hover {
+    color: #fff;
+    background-color: #506b44;
+    border: 2px solid #506b44;
+    text-decoration: none;
+  }
+
+
+.carbon_app_new_entry_main .box {
+    background-color: #ccdac4;
+    color: black;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    margin: 10px;
+    transition: transform 0.3s ease;
+}
+
+
+.btn_carbon_app_new_entry_main {
+    background-color: #628354;
+    border-radius: 3px;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: black;
+    margin: 4px 2px;
+    text-align: center;
+    border: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.btn_carbon_app_new_entry_main:hover{
+    transform: translateY(2px);
+    box-shadow: none;
+    color: black;
+    background-color: #557249;
+}
+
+.btn_carbon_app_new_entry_main:active {
+  transform: translateY(4px);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2), inset 0 0 8px rgba(0, 0, 0, 0.4);
 }

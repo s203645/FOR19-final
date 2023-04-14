@@ -13,7 +13,7 @@
     {% block content %}
     
 <!-- Header -->
-<section class="section_header_home">
+<section class="section_header">
     <div class="container">
         {% with messages = get_flashed_messages() %}
           {% if messages %}
@@ -39,12 +39,12 @@
                 <div class="container-buttons">
                   <div class="button-container">
                     <div class="container_buttons_header_home">
-                      <a class="btn_header_home" href="{{url_for('register')}}" type="button", style="color: black; text-decoration: none;">Register</a>
+                      <a class="btn_header_home" href="{{url_for('users.register')}}" type="button", style="color: black; text-decoration: none;">Register</a>
                     </div>
                   </div>
                   <div class="button-container">
                     <div class="container_buttons_header_home">
-                      <a class="btn_header_home" href="{{url_for('login')}}" type="button", style="color: black; text-decoration: none;"> Login </a>
+                      <a class="btn_header_home" href="{{url_for('users.login')}}" type="button", style="color: black; text-decoration: none;"> Login </a>
                     </div>
                   </div>
               </div>

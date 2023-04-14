@@ -3,41 +3,34 @@ from app.users.forms import RegistrationForm, LoginForm
 from app.models import User
 from app import db, bcrypt
 from flask_login import login_user, current_user, logout_user
+import flask 
 
 users=Blueprint('users',__name__)
-
-@users.route('/register', methods=['GET','POST'])
-def register():
-  form = RegistrationForm()
-  if current_user.is_authenticated:
-        return redirect(url_for('home.home_home'))
-  if form.validate_on_submit():
-      user_hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
-      user = User(username=form.username.data, email=form.email.data, password=user_hashed_password)
-      db.session.add(user)
-      db.session.commit()
-      flash('Your account has been created! Now, you are able to login!', 'success')
-      return redirect(url_for('users.login'))
-  return render_template('users/register.html', title='register', form=form)
-
-@users.route('/login', methods=['GET','POST'])
+@users.route("/login", methods=["POST", "GET"])
 def login():
-  form = LoginForm()
-  if current_user.is_authenticated:
-        return redirect(url_for('home.home_home'))
-  if form.validate_on_submit():
-    user = User.query.filter_by(email=form.email.data).first()
-    if user and bcrypt.check_password_hash(user.password, form.password.data):
-        login_user(user, remember=form.remember.data)
-        next_page = request.args.get('next')
-        flash('You have logged in! Now, you can start to use our Carbon App!', 'success')
-        return redirect(next_page) if next_page else redirect(url_for('home.home_home'))
-    else:
-        flash('Login Unsuccessful. Please check email and password!', 'danger') 
-  return render_template('users/login.html', title='login', form=form)
+    if request.method == "POST":
+        data = request.form
+        print(f"Username: {data['email']}")
+        print(f"Username: {data['password']}")
 
-@users.route('/logout')
-def logout():    
-    logout_user()
-    return redirect(url_for('home.home_home'))
+        if users.valid_login(data["email"], data["password"]):    
+            flash(f'Your login was successful! Welcome to our Carbon App, {users.get_full_name(data["email"])}!')
+            return flask.redirect("/")
+        else:
+            flash("Login failed. Please enter correct email and password.")
+            return flask.redirect('login')
+    return render_template('login.html')
+
+@users.route("/register", methods=["POST", "GET"])
+def register():
+    if request.method == "POST":
+        data = request.form
+        print(f"First Name: {data['f:name']}")
+        print(f"Last Name: {data['l:name']}")
+        print(f"Email: {data['email']}")
+        print(f"Password: {data['password']}")
+        new_user = User(data["f:name"], data["l:name"], data['email'], data['password'])
+        users.add(new_user)
+
+    return render_template('register.html')
 
