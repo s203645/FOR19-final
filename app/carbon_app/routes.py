@@ -8,9 +8,9 @@ import flask
 
 carbon_app=Blueprint('carbon_app',__name__)
 
-@carbon_app.route("/methodology")
-def methodology():
-    return render_template("methodology.html")
+@carbon_app.route("/carbon_app")
+def carbon_application():
+    return render_template("carbon_app.html")
 
 @carbon_app.route("/my_data")
 def my_data():
