@@ -1,4 +1,4 @@
-from flask import render_template, Blueprint, redirect, flash, url_for, request
+from flask import render_template, Blueprint, redirect, flash, url_for, request, session
 from app.users.forms import RegistrationForm, LoginForm
 from app.models import User
 from app import db, bcrypt
@@ -11,26 +11,37 @@ def login():
     if request.method == "POST":
         data = request.form
         print(f"Username: {data['email']}")
-        print(f"Username: {data['password']}")
+        print(f"Password: {data['password']}")
 
-        if users.valid_login(data["email"], data["password"]):    
-            flash(f'Your login was successful! Welcome to our Carbon App, {users.get_full_name(data["email"])}!')
+        if User.valid_login(data["email"], data["password"]) != None:    
+            login_user(User.valid_login(data["email"], data["password"]))
+            flash("Congratz, your login was successful!")
+            flash(f'Welcome to our carbone app {current_user.username}')
+            session['logged_in'] = True
             return flask.redirect("/")
         else:
             flash("Login failed. Please enter correct email and password.")
-            return flask.redirect('login')
-    return render_template('login.html')
+            return flask.redirect('/login')
+    else:
+        return flask.render_template('login.html')
 
 @users.route("/register", methods=["POST", "GET"])
 def register():
     if request.method == "POST":
         data = request.form
-        print(f"First Name: {data['f:name']}")
-        print(f"Last Name: {data['l:name']}")
-        print(f"Email: {data['email']}")
-        print(f"Password: {data['password']}")
-        new_user = User(data["f:name"], data["l:name"], data['email'], data['password'])
-        users.add(new_user)
+        new_user = User((data["f:name"] +" " + data["l:name"]), data['email'], data['password'])
+        db.session.add(new_user)
+        db.session.commit()
+        login_user(User.valid_login(data["email"], data["password"]))
+        flash("Congratz, your registration was successful!")
+        flash(f'Welcome to our carbone app {current_user.username}')
+        session['logged_in'] = True
+        return flask.redirect("/")
+    return flask.render_template('register.html')
 
-    return render_template('register.html')
-
+@users.route("/logout",  methods=['POST', 'GET'])
+def logout():
+    logout_user()
+    session.clear()
+    flash("You are loged out!")
+    return flask.redirect("/")

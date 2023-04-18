@@ -24,14 +24,22 @@
   <div id="wrap" class="container-background">
     <div id="main">
       <!-- Creating navbar and setting active page -->
-      {% set navigation_bar = [
+      {% set navigation_bar_logout = [
         ('/', 'home', 'Home'),
         ('/methodology', 'methodology', "Methodology"),
         ('/carbon_app', 'carbon_app', 'Carbon App'),
         ('/register', 'register', 'Register'),
         ('/login', 'login', 'Login'),
-        ('/my_data', 'my_data', 'My data')
         ] -%}
+
+      {% set navigation_bar_login = [
+        ('/', 'home', 'Home'),
+        ('/methodology', 'methodology', "Methodology"),
+        ('/carbon_app', 'carbon_app', 'Carbon App'),
+        ('/my_data', 'my_data', 'My data'),
+        ('/logout', 'logout', 'Logout')
+        ] -%}
+
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary" id="navbar">
         <div class="container-fluid">
           <!--Navbar Brand-->
@@ -47,7 +55,8 @@
           <!-- Navbar items, iterate through the navigation_bar list-->
           <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-              {% for href, id, caption in navigation_bar %}
+              {% if session['logged_in'] == True %}
+              {% for href, id, caption in navigation_bar_login %}
               <li 
                 {% if id == active_page %} 
                   class="nav-item active" 
@@ -57,6 +66,18 @@
                 <a class="nav-link" href="{{ href|e }}">{{ caption|e }}</a>
               </li>
               {% endfor %}
+              {% else %}
+              {% for href, id, caption in navigation_bar_logout %}
+              <li 
+                {% if id == active_page %} 
+                  class="nav-item active" 
+                {% else %} 
+                  class="nav-item" 
+                {% endif %}>
+                <a class="nav-link" href="{{ href|e }}">{{ caption|e }}</a>
+              </li>
+              {% endfor %}
+              {% endif %}
             </ul>
           </div>
         </div>
