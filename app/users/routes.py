@@ -15,8 +15,7 @@ def login():
 
         if User.valid_login(data["email"], data["password"]) != None:    
             login_user(User.valid_login(data["email"], data["password"]))
-            flash("Congratz, your login was successful!")
-            flash(f'Welcome to our carbone app {current_user.username}')
+            flash(f'Your login was successful! Welcome to our Carbon App, {current_user.username}')
             session['logged_in'] = True
             return flask.redirect("/")
         else:
