@@ -4,17 +4,6 @@
 }
 .header_home {
   display: flex;
-  padding-top: 50px;
-}
-
-.home .title {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  display: inline;
-  font-size: 50px;
 }
 
 .home .title:nth-of-type(1) {
