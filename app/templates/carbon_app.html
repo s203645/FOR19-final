@@ -61,6 +61,7 @@
             </div> 
           </div>
         </section>
+<<<<<<< HEAD
       
         <section class="section_header">
           <div class="container">
@@ -78,6 +79,33 @@
         </section>
 
    
+=======
+
+
+    <!-- carbon_app_new_entry_main -->
+    <section class="section_carbon_app_new_entry_main">
+      <div class="container">
+    
+        <div class="carbon_app_new_entry_main" style="display:block;">
+          <br>
+          <h3 style="text-align:center;">Find your desired mean of conveyance in the boxes below</h3>     
+        </div>
+    
+        <div class="carbon_app_new_entry_main">   
+            <div class="box">
+              <div class="h1 mb-3" style="text-align: center;">
+                  <i class="fa-solid fa-plane"></i>
+              </div>
+              <h3>Plane</h3>
+              <p class="instructions_calculator">1. Enter the number of kilometers. <br> 2. Select the type of fuel.
+              </p>
+              <div class="section_container_buttons_carbon_app_new_entry_main">
+                <a class="btn_carbon_app_new_entry_main" data-bs-toggle="modal" data-bs-target="#new_entry"> New Entry </a> <!-- bs-target links to the id of the modal-->
+              </div> 
+            </div>
+      </div>          
+    </section>
+>>>>>>> 820e23ae39e508e7552ab2b06a0bae2197d09afb
 
      <!-- Modal -->
      <div class="modal fade" id="new_entry" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -85,14 +113,20 @@
       <div class="modal-content">
           <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">New Entry</h5>
+          
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
             <div class="h1 mb-3" style="text-align: center;">
+<<<<<<< HEAD
               <i id="transport_icon" class="fa-solid fa-road"></i>
+=======
+              <i class="fa-solid fa-truck-plane"></i>
+>>>>>>> 820e23ae39e508e7552ab2b06a0bae2197d09afb
             </div>
-            <label for="transport">Choose a car:</label>
+            <label for="transport">Type of transport</label> <br>
             <select id="transport">
+<<<<<<< HEAD
               <option selected disabled>Choose a transport midle</option>
               <option value="car">Car</option>
               <option value="bus">Bus</option>
@@ -108,16 +142,41 @@
             <label for="fuel">Choose a car:</label>
             <select id="fuel">
               <option selected disabled>Choose a fuel type</option>
+=======
+              <option selected disabled>Choose your mean of transport</option>
+              <option value="Car">Car</option>
+              <option value="Bus">Bus</option>
+              <option value="Plane">Plane</option>
+              <option value="Ferry">Ferry</option>
+              <option value="Motorbike">Motorbike</option>
+              <option value="Bicycle">Bicycle</option>
+              <option value="Walk">Walk</option>
+              <option value="Train">Train</option>
+            </select>
+
+            <br>
+            <label for="fuel">Fuel type</label> <br>
+            <select id="fuel">
+              <option selected disabled>Choose the type of fuel</option>
+>>>>>>> 820e23ae39e508e7552ab2b06a0bae2197d09afb
               <option value="Diesel">Diesel</option>
               <option value="CNG">CNG</option>
               <option value="Petrol">Petrol</option>
               <option value="Electric">Electric</option>
               <option value="No fuel">No fuel</option>
             </select>
+            <br>
+            <label for="kms">Kilometers</label> <br>
+            <input type="number" id="kms" name="kms" placeholder="Number of Kilometers"
+            required>
           </div>
           <div class="modal-footer">
           <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+<<<<<<< HEAD
           <button type="button" class="btn btn-success" id="newEntryButton" data-bs-dismiss="modal">Submit</button>
+=======
+          <button type="button" class="btn btn-success" data-bs-dismiss="modal">Submit</button>
+>>>>>>> 820e23ae39e508e7552ab2b06a0bae2197d09afb
           </div>
       </div>
       </div>
