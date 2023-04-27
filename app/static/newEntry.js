@@ -126,4 +126,5 @@ const over_time_emissions = () =>{
 
 const refresh = () => {
     emissions_by_transport();
+    over_time_emissions();
 }

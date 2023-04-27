@@ -11,7 +11,7 @@ carbon_app=Blueprint('carbon_app',__name__)
 
 efco2={
         'Bus':{'Diesel':0.10231,'CNG':0.08,'Petrol':0.10231,'No Fossil Fuel':0},
-        'Car':{'Petrol':0.18592,'Diesel':0.16453,'No Fossil Fuel':0},
+        'Car':{'Petrol':0.18592,'Diesel':0.16453,'No Fossil Fuel':0, 'Electric':0},
         'Plane':{'Petrol':0.24298},
         'Ferry':{'Diesel':0.11131, 'CNG':0.1131, 'No Fossil Fuel':0},
         'Motorbike':{'Petrol':0.09816,'No Fossil Fuel':0},
@@ -22,7 +22,7 @@ efco2={
 
 efch4={
         'Bus':{'Diesel':2e-5,'CNG':2.5e-3,'Petrol':2e-5,'No Fossil Fuel':0},
-        'Car':{'Petrol':3.1e-4,'Diesel':3e-6,'No Fossil Fuel':0},
+        'Car':{'Petrol':3.1e-4,'Diesel':3e-6,'No Fossil Fuel':0, 'Electric':0},
         'Plane':{'Petrol':1.1e-4},
         'Ferry':{'Diesel':3e-5, 'CNG':3e-5,'No Fossil Fuel':0},
         'Motorbike':{'Petrol':2.1e-3,'No Fossil Fuel':0},

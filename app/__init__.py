@@ -15,7 +15,7 @@ application.config['SECRET_KEY'] = "80e49e4bea0c03d64cc40d37f11535b85e93880b43c8
 #application.config['SQLALCHEMY_DATABASE_URI'] = DBVAR 
 #application.config['SQLALCHEMY_BINDS'] ={'transport': DBVAR}
 
-#application.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root@127.0.0.1/for19'
+application.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root@127.0.0.1/FOR19'
 
 #application.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 #application.config['SQLALCHEMY_POOL_SIZE'] = 50

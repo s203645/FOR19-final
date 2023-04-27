@@ -217,3 +217,17 @@
   border-radius: 10% !important;
   width: 50%;
 }
+
+
+/* My Data */
+
+.charts {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  height: 100%;
+}
+
+
