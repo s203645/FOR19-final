@@ -100,7 +100,7 @@
               <p class="instructions_calculator">1. Enter the number of kilometers. <br> 2. Select the type of fuel
               </p>
               <div class="section_container_buttons_carbon_app_new_entry_main">
-                <a class="btn_carbon_app_new_entry_main" >New Entry</a>
+                <a class="btn_carbon_app_new_entry_main" data-bs-toggle="modal" data-bs-target="#new_entry"> New Entry </a> <!-- bs-target links to the id of the modal-->
               </div> 
             </div>
             <div class="box">
@@ -162,6 +162,51 @@
     
       </div>          
     </section>
+
+     <!-- Modal -->
+     <div class="modal fade" id="new_entry" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg " >
+      <div class="modal-content">
+          <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">New Entry</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="h1 mb-3" style="text-align: center;">
+              <i class="fa-solid fa-person-walking"></i>
+            </div>
+            <label for="transport">Choose a car:</label>
+            <select id="transport">
+              <option selected disabled>Choose a transport midle</option>
+              <option value="Car">Car</option>
+              <option value="Car">Car</option>
+              <option value="Bus">Bus</option>
+              <option value="Plane">Plane</option>
+              <option value="Ferry">Ferry</option>
+              <option value="Motorbike">Motorbike</option>
+              <option value="Bicycle">Bicycle</option>
+              <option value="Walk">Walk</option>
+              <option value="Train">Train</option>
+            </select>
+            <label for="kms">Enter the number of kilometers</label>
+            <input type="number" id="kms" name="kms">
+            <label for="transport">Choose a car:</label>
+            <select id="transport">
+              <option selected disabled>Choose a fuel type</option>
+              <option value="Diesel">Diesel</option>
+              <option value="CNG">CNG</option>
+              <option value="Petrol">Petrol</option>
+              <option value="Electric">Electric</option>
+              <option value="No fuel">No fuel</option>
+            </select>
+          </div>
+          <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancle</button>
+          <button type="button" class="btn btn-success" data-bs-dismiss="modal">Submit</button>
+          </div>
+      </div>
+      </div>
+    </div>  
 
     {% endblock %}
     
