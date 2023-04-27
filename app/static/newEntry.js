@@ -203,9 +203,6 @@ const over_time_kms = () => {
 const refresh = () => {
     emissions_by_transport();
     over_time_emissions();
-<<<<<<< HEAD
-=======
     kms_transport_data();
     over_time_kms();
->>>>>>> cf0bd1c7d68325ac4aa174b642118b8f06ff2a61
 }

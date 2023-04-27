@@ -15,7 +15,7 @@ DBVAR = 'postgresql://postgres:FOR19postgres@awseb-e-9vb4b2xpis-stack-awsebrdsda
 application.config['SQLALCHEMY_DATABASE_URI'] = DBVAR 
 application.config['SQLALCHEMY_BINDS'] ={'transport': DBVAR}
 
-application.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root@127.0.0.1/FOR19'
+#application.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root@127.0.0.1/FOR19'
 
 application.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 application.config['SQLALCHEMY_POOL_SIZE'] = 50
