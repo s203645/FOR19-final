@@ -5,13 +5,19 @@ from datetime import timedelta, datetime
 from flask_login import login_required, current_user
 from app.carbon_app.forms import BusForm, CarForm, PlaneForm, FerryForm, MotorbikeForm, BicycleForm, WalkForm
 import flask
+from sqlalchemy import cast, Date, func
 
 
 carbon_app=Blueprint('carbon_app',__name__)
 
 efco2={
+
         'Bus':{'Diesel':0.10231,'CNG':0.08,'Petrol':0.10231,'No Fossil Fuel':0},
         'Car':{'Petrol':0.18592,'Diesel':0.16453,'No Fossil Fuel':0, 'Electric':0},
+
+        'Bus':{'Diesel':0.10231,'CNG':0.08,'Petrol':0.10231,'No Fossil Fuel':0, 'Electric':0},
+        'Car':{'Petrol':0.18592,'Diesel':0.16453,'No Fossil Fuel':0,    'Electric':0},
+
         'Plane':{'Petrol':0.24298},
         'Ferry':{'Diesel':0.11131, 'CNG':0.1131, 'No Fossil Fuel':0},
         'Motorbike':{'Petrol':0.09816,'No Fossil Fuel':0},
@@ -21,7 +27,11 @@ efco2={
     }
 
 efch4={
+
         'Bus':{'Diesel':2e-5,'CNG':2.5e-3,'Petrol':2e-5,'No Fossil Fuel':0},
+=======
+        'Bus':{'Diesel':2e-5,'CNG':2.5e-3,'Petrol':2e-5,'No Fossil Fuel':0, 'Electric':0},
+
         'Car':{'Petrol':3.1e-4,'Diesel':3e-6,'No Fossil Fuel':0, 'Electric':0},
         'Plane':{'Petrol':1.1e-4},
         'Ferry':{'Diesel':3e-5, 'CNG':3e-5,'No Fossil Fuel':0},
@@ -61,13 +71,32 @@ def my_data(arg):
         emissions_by_date = db.session.query(db.func.sum(Transport.total), Transport.date). \
             filter(Transport.date > (datetime.now() - timedelta(days=5))).filter_by(user_id=current_user.id). \
             group_by(Transport.date).order_by(Transport.date.asc()).all()
+        print(emissions_by_date)
         over_time_emissions = {'labels': [], 'values': []}
         for total, date in emissions_by_date:
             over_time_emissions['labels'].append(date.strftime("%m-%d-%y"))
             over_time_emissions['values'].append(total)
         print(over_time_emissions)
         return jsonify(over_time_emissions)
-
+    elif int(arg) == 3:
+        kms_by_transport = db.session.query(db.func.sum(Transport.kms), Transport.transport). \
+        filter(Transport.date > (datetime.now() - timedelta(days=5))).filter_by(user_id=current_user.id). \
+        group_by(Transport.transport).order_by(Transport.transport.asc()).all()
+        kms_by_transport_dict = {'labels': [], 'values': []}
+        for i in kms_by_transport:
+            kms_by_transport_dict['labels'].append(i[1])
+            kms_by_transport_dict['values'].append(i[0])    
+        return jsonify(kms_by_transport_dict)
+    elif int(arg) == 4:
+        print('here')
+        kms_by_date = db.session.query(db.func.sum(Transport.kms), Transport.date). \
+        filter(Transport.date > (datetime.now() - timedelta(days=5))).filter_by(user_id=current_user.id). \
+        group_by(Transport.date).order_by(Transport.date.asc()).all()
+        over_time_kms = {'labels': [], 'values': []}
+        for total, date in kms_by_date:
+            over_time_kms['labels'].append(date.strftime("%m-%d-%y"))
+            over_time_kms['values'].append(total)
+        return jsonify(over_time_kms)
 
     #return jsonify(emissions_by_transport_dict)
   
