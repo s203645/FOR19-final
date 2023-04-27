@@ -79,35 +79,63 @@
       </div>
       <div class="developers">  <!-- Creats a list with name, and filename off photo-->
         {% set dev_team = [
-          ("Christian", 'Christian.jpg'), 
-          ('Sara', 'Sara.jpg'), 
-          ('Richard', 'Richard.jpg'),
-          ('Per Ole', 'Per.jpg'),
-          ('Jon', 'Jon.jpg')]
+          ("Christian", 'Christian.jpg', 'https://github.com/Eriksen1110/FOR19'), 
+          ('Sara', 'Sara.jpg', 'https://github.com/s203645/FOR19-final'), 
+          ('Richard', 'Richard.jpg', 'https://github.com/jonkringeland'),
+          ('Per Ole', 'Per.jpg', 'https://github.com/perolelande/for19'),
+          ('Jon', 'Jon.jpg','https://github.com/jonkringeland')]
           -%}
 
-        {% for name, path in dev_team %} <!-- Iterate through the list, and per element ( .., ..) I create two minor elements-->
-        <div class="box">
-          <img class="box-image" src="static/images/{{path}}" alt="" style="border-radius: 50%; width:200px;">
-          <h3> {{ name }}</h3>
-          <p>
-            <il>
-              <li> 
-                22 years old
-              </li>
-              <li>
-                3rd year student at NHH
-              </li>
-              <li>
-                Interested in economics and IT
-              </li>
-            </il>
-          </p>
+          {% for name, path, url in dev_team %}
+          <div class="box">
+            <img class="box-image" src="static/images/{{path}}" alt="" style="border-radius: 50%; width:200px;">
+            <h3> {{ name }}</h3>
+            <p>
+              <il>
+                {% if name == 'Christian' %}
+                  <li> 
+                    22 years old from Asker
+                  </li>
+                  <li>
+                    3rd year student at NHH
+                  </li>
+                {% elif name == 'Sara' %}
+                  <li> 
+                    22 years old from Bergen
+                  </li>
+                  <li>
+                    3rd year student at NHH
+                  </li>
+                {% elif name == 'Richard' %}
+                  <li> 
+                    22 years old from Bergen
+                  </li>
+                  <li>
+                    3rd year student at NHH
+                  </li>
+                {% elif name == 'Per Ole' %}
+                  <li> 
+                    23 years old from Karmøy
+                  </li>
+                  <li>
+                    3rd year student at NHH
+                  </li>
+                {% else %}
+                  <li> 
+                    22 years old from Haugesund
+                  </li>
+                  <li>
+                    3rd year student at NHH
+                  </li>
+                {% endif %}
+              </il>
+            </p>
+        
           <div class="container_buttons_developers">
             <a class="btn_developers" data-bs-toggle="modal" data-bs-target="#cv_Modal"> Curriculum </a> <!-- bs-target links to the id of the modal-->
           </div>
           <div class="container_buttons_developers">
-            <a class="btn_developers" href="https://github.com/Eriksen1110/FOR19" target="_blank"> <!-- Using _blank to open a new tab-->
+            <a class="btn_developers" href="{{url}}" target="_blank"> <!-- Using _blank to open a new tab-->
               GitHub
             </a>
           </div>
