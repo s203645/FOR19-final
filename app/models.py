@@ -56,7 +56,7 @@ class Transport(db.Model):
     total = db.Column(db.Float)  
     user_id = db.Column(db.Integer, db.ForeignKey(User.id), nullable=False)
 
-    def __init__(self, kms, transport, fuel, date, co2, ch4, total, user_id):
+    def __init__(self, kms, transport, fuel, co2, ch4, total, user_id):
         self.kms = kms
         self.transport = transport
         self.fuel =fuel

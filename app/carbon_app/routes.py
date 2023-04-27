@@ -1,10 +1,11 @@
-from flask import render_template, Blueprint, request, redirect, url_for, flash
+from flask import render_template, Blueprint, request, redirect, url_for, flash, jsonify
 from app.models import Transport
 from app import db
 from datetime import timedelta, datetime
 from flask_login import login_required, current_user
 from app.carbon_app.forms import BusForm, CarForm, PlaneForm, FerryForm, MotorbikeForm, BicycleForm, WalkForm
 import flask
+
 
 carbon_app=Blueprint('carbon_app',__name__)
 
@@ -30,17 +31,57 @@ efch4={
         'Walk':{'No Fossil Fuel':0}
     }
 
+transport_dict = {
+    'bus': 'Bus',
+    'car': 'Car',
+    'plane': 'Plane',
+    'ferry': 'Ferry',
+    'motorcycle': 'Motorbike',
+    'bicycle': 'Bicycle',
+    'person-walking': 'Walk',
+    'train': 'Train'
+}
+
 @carbon_app.route("/carbon_app")
 def carbon_application():
     return render_template("carbon_app.html")
 
-@carbon_app.route("/my_data")
-def my_data():
-    return render_template("my_data.html")
+@carbon_app.route("/my_data/<arg>")
+def my_data(arg):
+    if int(arg) == 1:
+        emissions_by_transport = db.session.query(db.func.sum(Transport.total), Transport.transport). \
+            filter(Transport.date > (datetime.now() - timedelta(days=5))).filter_by(user_id=current_user.id). \
+            group_by(Transport.transport).order_by(Transport.transport.asc()).all()
+        emissions_by_transport_dict = {'labels': [], 'values': []}
+        for i in emissions_by_transport:
+            emissions_by_transport_dict['labels'].append(i[1])
+            emissions_by_transport_dict['values'].append(i[0])
+        return jsonify(emissions_by_transport_dict)
+    elif int(arg) == 2:
+        emissions_by_date = db.session.query(db.func.sum(Transport.total), Transport.date). \
+            filter(Transport.date > (datetime.now() - timedelta(days=5))).filter_by(user_id=current_user.id). \
+            group_by(Transport.date).order_by(Transport.date.asc()).all()
+        over_time_emissions = {'labels': [], 'values': []}
+        for total, date in emissions_by_date:
+            over_time_emissions['labels'].append(date.strftime("%m-%d-%y"))
+            over_time_emissions['values'].append(total)
+        print(over_time_emissions)
+        return jsonify(over_time_emissions)
+
+
+    #return jsonify(emissions_by_transport_dict)
   
-@carbon_app.route("/new_entry", methods=['GET', 'POST'])
-def new_entry():
+@carbon_app.route("/newEntry", methods=['GET', 'POST'])
+@login_required
+def newEntry():
     if request.method == 'POST':
-        data = request.form['data']
+        data = request.form
+        transport = transport_dict[data['transport']]
+        co2 = float(data['kms']) * efco2[transport][data['fuel']]
+        ch4 = float(data['kms']) * efch4[transport][data['fuel']]
+        emissions = Transport(data['kms'],transport, data['fuel'], co2, ch4, co2+ch4, current_user.id)
+        db.session.add(emissions)
+        db.session.commit()
+        return jsonify({'success': "Data received successfully!"})
 
     return render_template("new_entry.html")
