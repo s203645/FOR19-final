@@ -1,0 +1,106 @@
+/* Section header_home */
+.section_header {
+  background-color: #e7efe5;
+}
+.header_home {
+  display: flex;
+  padding-top: 50px;
+}
+
+.home .title {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  display: inline;
+  font-size: 50px;
+}
+
+.home .title:nth-of-type(1) {
+  position: absolute;
+  left: 20%;
+}
+
+.home .title:nth-of-type(2) {
+  position: absolute;
+  left: 40%;
+}
+
+.home .title:nth-of-type(3) {
+  position: absolute;
+  left: 60%;
+}
+
+.home .title:nth-of-type(4) {
+  position: absolute;
+  left: 80%;
+}
+
+.header_home .box {
+  flex: 1;
+  margin: 20px 10px;
+  padding: 15px 10px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+.home .text {
+  text-align: center;
+  margin-bottom: -15px;
+}
+
+.header_home .box:nth-of-type(1) {
+  flex-grow: 2;
+}
+.header_home .box:nth-of-type(2) {
+  flex-grow: 1;
+}
+.text_align_left {
+  text-align: left;
+}
+.box:nth-of-type(2) {
+  position: relative;
+}
+
+.button-container {
+  background-color: #628354;
+  border-radius: 3px;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: black;
+  margin: 4px 2px;
+  text-align: center;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-right: 10px;
+  width: 50%;
+  display: block;
+  padding: 10px 15px; /* add padding to increase clickable area */
+}
+
+.container-buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.button-container:hover {
+  transform: translateY(2px);
+  box-shadow: none;
+  color: black;
+  background-color: #557249;
+}
+
+.btn_header_home {
+  display: block; /* make the link a block element */
+  width: 100%; /* make it take the full width of the container */
+  height: 100%; /* make it take the full height of the container */
+  color: black;
+  text-decoration: none;
+}

@@ -1,0 +1,86 @@
+/* Header */
+
+.header_home .box {
+    flex: 1;
+    margin: 20px 10px;
+    padding: 15px 10px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .home .text {
+    flex: 1;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+  }
+
+/* Formulas */
+.section_formulas,
+.section_new_entries {
+  background-color: #f4f7f1;
+  min-height: 100%;
+  position: relative;
+  padding-bottom: calc(100vh - (var(--footer-height)));
+  padding: 20px;
+}
+
+.box-formula {
+  background-color: #ccdac4;
+  border-radius: 10px;
+  color: black;
+  text-align: center;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+  padding: 10px;
+  margin: 10px;
+  transition: transform 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.formulas {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 2px;
+}
+
+/* Buttons */
+
+.box .btn {
+  background-color: #628354 !important;
+  border-radius: 3px;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: black;
+  margin: 4px 2px;
+  text-align: center;
+  border: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.box .btn:hover {
+  transform: translateY(2px);
+  box-shadow: none;
+  color: black;
+  background-color: #557249;
+}
+.box .btn:focus {
+  background-color: #628354;
+  border-radius: 3px;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: black;
+  margin: 4px 2px;
+  text-align: center;
+  border: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+}

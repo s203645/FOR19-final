@@ -15,7 +15,7 @@ def login():
 
         if User.valid_login(data["email"], data["password"]) != None:    
             login_user(User.valid_login(data["email"], data["password"]))
-            flash(f'Login successful! Welcome back, {current_user.username}')
+            flash(f'Login successful. Welcome back, {current_user.username}!')
             session['logged_in'] = True
             return flask.redirect("/")
         else:
@@ -32,7 +32,7 @@ def register():
         db.session.add(new_user)
         db.session.commit()
         login_user(User.valid_login(data["email"], data["password"]))
-        flash(f'Your registration was successful! Welcome to our Carbon App, {current_user.username}')
+        flash(f'Your registration was successful. Welcome to our Carbon App, {current_user.username}!')
         session['logged_in'] = True
         return flask.redirect("/")
     return flask.render_template('register.html')

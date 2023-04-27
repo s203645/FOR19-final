@@ -13,6 +13,7 @@
     {% block content %}
     
 <!-- Header -->
+<link rel="stylesheet" href="static/home.css">
 <section class="section_header">
     <div class="container">
         {% with messages = get_flashed_messages() %}
@@ -31,6 +32,10 @@
           {% endif %}
       {% endwith %}
       <div class="home">
+        <h2 class="title"><span style="font-family:'Brush Script MT, cursive;'">H</span></h2>
+        <h2 class="title"><span style="font-family:'Brush Script MT, cursive;'">O</span></h2>
+        <h2 class="title"><span style="font-family:'Brush Script MT, cursive;'">M</span></h2>
+        <h2 class="title"><span style="font-family:'Brush Script MT, cursive;'">E</span></h2>
         <div class="header_home">
             <div class="box box-left">
                 <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut tenetur soluta amet, ipsum, provident possimus quo at consequuntur temporibus eius cupiditate. Nostrum aut numquam impedit doloremque quo laborum eaque rerum provident sed est incidunt dolore libero, at distinctio tenetur dicta. Expedita necessitatibus est, illo excepturi dolore fugit animi maiores sequi.
@@ -64,7 +69,16 @@
       <div class="developers d_team">
         <h1 style="text-align: center;"> Our Team</h1>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum quo recusandae sed praesentium corporis necessitatibus facilis et eveniet, hic illo! Assumenda modi quasi dolores, dicta velit laudantium magni nam quia laborum nostrum fuga eveniet, maxime maiores voluptates doloribus pariatur omnis?
+          Our team consists of 5 developers, who are all students at NHH - Norwegian School of Economics. 
+          Our shared passion for economics and IT has fueled our excitement about combining 
+          these two fields to create this Carbon App that we believe can make a significant impact on the environment. 
+          We are driven by a strong desire to make a positive difference in the world, and we recognize that technology 
+          can be a powerful tool in achieving this goal. <br><br>
+          Our team is deeply committed to developing a solution that will promote sustainable practices and encourage 
+          both individuals and businesses to make environmentally friendly choices in their daily lives. We recognize the pressing need for 
+          action to address the challenges facing our planet, and we believe that our application can be a catalyst for positive change.
+
+
         </p>
       </div>
       <div class="developers">  <!-- Creats a list with name, and filename off photo-->
@@ -80,7 +94,19 @@
         <div class="box">
           <img class="box-image" src="static/images/{{path}}" alt="" style="border-radius: 50%; width:200px;">
           <h3> {{ name }}</h3>
-          <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quae temporibus repellendus eos nemo voluptas ducimus repudiandae esse possimus, a maxime sed quod iste minima quis!</p>
+          <p>
+            <il>
+              <li> 
+                22 years old
+              </li>
+              <li>
+                3rd year student at NHH
+              </li>
+              <li>
+                Interested in economics and IT
+              </li>
+            </il>
+          </p>
           <div class="container_buttons_developers">
             <a class="btn_developers" data-bs-toggle="modal" data-bs-target="#cv_Modal"> Curriculum </a> <!-- bs-target links to the id of the modal-->
           </div>
