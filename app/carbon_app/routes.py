@@ -3,7 +3,6 @@ from app.models import Transport
 from app import db
 from datetime import timedelta, datetime
 from flask_login import login_required, current_user
-from app.carbon_app.forms import BusForm, CarForm, PlaneForm, FerryForm, MotorbikeForm, BicycleForm, WalkForm
 import flask
 from sqlalchemy import cast, Date, func
 
@@ -29,7 +28,7 @@ efco2={
 efch4={
 
         'Bus':{'Diesel':2e-5,'CNG':2.5e-3,'Petrol':2e-5,'No Fossil Fuel':0},
-=======
+
         'Bus':{'Diesel':2e-5,'CNG':2.5e-3,'Petrol':2e-5,'No Fossil Fuel':0, 'Electric':0},
 
         'Car':{'Petrol':3.1e-4,'Diesel':3e-6,'No Fossil Fuel':0, 'Electric':0},
