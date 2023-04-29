@@ -91,7 +91,6 @@ const emissions_by_transport = () =>{
         });
 }
 
-
 const over_time_emissions = () =>{
     const ctx = document.getElementById('over_time_emissions').getContext('2d');
     let chart = null;
@@ -196,14 +195,9 @@ const over_time_kms = () => {
         });
 }
 
-
-
-
-
 const refresh = () => {
     emissions_by_transport();
     over_time_emissions();
-
     kms_transport_data();
     over_time_kms();
 }
