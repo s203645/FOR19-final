@@ -243,3 +243,27 @@
   flex-wrap: wrap;
   height: 100%;
 }
+
+#emissions_by_transport {
+  width: 50vh;
+  height: auto;
+  margin: 20px;
+}
+
+#over_time_emissions {
+  width: 50vh;
+  height: auto;
+  margin: 20px;
+}
+
+#kms_by_transport {
+  width: 50vh;
+  height: auto;
+  margin: 20px;
+}
+
+#over_time_kms {
+  width: 50vh;
+  height: auto;
+  margin: 20px;
+}

@@ -67,13 +67,13 @@ const emissions_by_transport = () =>{
                         datasets: [{
                             data: data.values,
                             backgroundColor: ['#64cbda', '#14b2d1', '#226e96',
-                            '#1e5171', '#c2b380', '#dfce9d', '#ffffff59', '#c3d8d4' ],    
+                            '#1e5171', '#c2b380', '#dfce9d', '#ffffff59', '#c3d8d4', 'black'  ],    
                 
                             borderWidth: 1,
                             hoverBorderColor: "black",
                             hoverBorderWidth: 2,
                             hoverBackgroundColor: ['#64cbda', '#14b2d1', '#226e96',
-                            '#1e5171', '#c2b380', '#dfce9d', '#ffffff59', '#c3d8d4' ], 
+                            '#1e5171', '#c2b380', '#dfce9d', '#ffffff59', '#c3d8d4', 'black'  ], 
                             pointHoverRadius: 5
                         }],
                     },
@@ -146,12 +146,12 @@ const kms_transport_data = () => {
                         label: "Income Vs Expenses",
                         data: data.values,
                         backgroundColor: ['#64cbda', '#14b2d1', '#226e96',
-                            '#1e5171', '#c2b380', '#dfce9d', '#ffffff59', '#c3d8d4' ],     
+                            '#1e5171', '#c2b380', '#dfce9d', '#ffffff59', '#c3d8d4', 'black' ],     
                         borderWidth: 1,
                         hoverBorderColor: "black",
                         hoverBorderWidth: 2,
                         hoverBackgroundColor: ['#64cbda', '#14b2d1', '#226e96',
-                            '#1e5171', '#c2b380', '#dfce9d', '#ffffff59', '#c3d8d4' ], 
+                            '#1e5171', '#c2b380', '#dfce9d', '#ffffff59', '#c3d8d4', 'black'  ], 
                         pointHoverRadius: 5
                     }],
                 },

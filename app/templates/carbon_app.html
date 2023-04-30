@@ -63,8 +63,6 @@
         </section>
 
 
-
-
       
         <section class="section_header">
           <div class="container">
@@ -76,8 +74,9 @@
                   <canvas id="emissions_by_transport"></canvas>
               </div>
               <div class="box">
-                  <canvas id="over_time_emissions"></canvas> 
-              </div>
+                <canvas id="kms_by_transport"></canvas>
+            </div>
+              
             </div>
           </div>
         </section>
@@ -86,9 +85,9 @@
          <!-- Two Emissions Graph Section -->
         <section class="two_emissions_graphs">
           <div class="container">
-              <div class="box">
-                  <canvas id="kms_by_transport"></canvas>
-              </div>
+            <div class="box">
+              <canvas id="over_time_emissions"></canvas> 
+          </div>
               <div class="box">
                   <canvas id="over_time_kms"></canvas>
               </div>
@@ -114,22 +113,26 @@
               <option selected disabled value="default">Choose your mean of transport</option>
               <option value="car">Car</option>
               <option value="bus">Bus</option>
-              <option value="plane">Plane</option>
+              <option value="train-tram">Light rail and tram</option>
+              <option value="train">Train</option>
+              <option value="plane">Long distance flight</option>
+              <option value="plane-up">Domestic flight</option>
               <option value="ferry">Ferry</option>
               <option value="motorcycle">Motorbike</option>
               <option value="bicycle">Bicycle</option>
               <option value="person-walking">Walk</option>
-              <option value="train">Train</option>
+              
             </select>
             <br>
             <label for="fuel">Fuel type</label> <br>
             <select id="fuel">
               <option selected disabled value="default">Choose a fuel type</option>
-              <option value="Diesel">Diesel</option>
-              <option value="CNG">CNG</option>
-              <option value="Petrol">Petrol</option>
               <option value="Electric">Electric</option>
-              <option value="No Fossil Fuel">No fuel</option>
+              <option value="Diesel">Diesel</option>
+              <option value="Gasoline">Gasoline</option>
+              <option value="Hybrid">Hybrid</option>
+              <option value="Jet Fuel">Jet fuel</option>
+              <option value="No Fossil Fuel">No fossil fuel</option>
             </select>
             <br>
             <label for="kms">Kilometers</label> <br>
