@@ -14,7 +14,7 @@ efco2={
         'Ferry':{'Diesel':0.019},
         'Train':{'Diesel':0.041,'Electric':0},
         'Car':{'Diesel':0.171, 'Gasoline':0.192, 'Hybrid':0.109, 'Electric':0.053},
-        'Motorbike':{'Gasoline':0.103,'No Fossil Fuel':0},
+        'Motorbike':{'Gasoline':0.103},
         'Bus':{'Diesel':0.105,'Electric':0},
         'Long distance flight':{'Jet Fuel':0.150},
         'Domestic flight':{'Jet Fuel':0.255},
