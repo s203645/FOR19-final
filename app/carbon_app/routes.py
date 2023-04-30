@@ -49,6 +49,7 @@ def carbon_application():
 
 @carbon_app.route("/my_data/<arg>")
 def my_data(arg):
+    
     if int(arg) == 1:
         emissions_by_transport = db.session.query(db.func.sum(Transport.total), Transport.transport). \
             filter(Transport.date > (datetime.now() - timedelta(days=5))).filter_by(user_id=current_user.id). \
@@ -89,19 +90,22 @@ def my_data(arg):
             over_time_kms['values'].append(total)
         return jsonify(over_time_kms)
 
+
     #return jsonify(emissions_by_transport_dict)
   
 @carbon_app.route("/newEntry", methods=['GET', 'POST'])
 @login_required
 def newEntry():
     if request.method == 'POST':
-        data = request.form
-        transport = transport_dict[data['transport']]
-        co2 = float(data['kms']) * efco2[transport][data['fuel']]
-        ch4 = float(data['kms']) * efch4[transport][data['fuel']]
-        emissions = Transport(data['kms'],transport, data['fuel'], co2, ch4, co2+ch4, current_user.id)
-        db.session.add(emissions)
-        db.session.commit()
-        return jsonify({'success': "Data received successfully!"})
-
+        try:
+            data = request.form
+            transport = transport_dict[data['transport']]
+            co2 = float(data['kms']) * efco2[transport][data['fuel']]
+            ch4 = float(data['kms']) * efch4[transport][data['fuel']]
+            emissions = Transport(data['kms'],transport, data['fuel'], co2, ch4, co2+ch4, current_user.id)
+            db.session.add(emissions)
+            db.session.commit()
+            return jsonify({'success': "Data received successfully!"})
+        except Exception as e:
+            return jsonify({'error': str(e)})
     return render_template("new_entry.html")
