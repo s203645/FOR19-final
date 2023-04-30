@@ -58,13 +58,14 @@ const emissions_by_transport = () =>{
                     labels: data.labels,
                         datasets: [{
                             data: data.values,
-                            backgroundColor: ['#9ac2be', '#f2e3b6', '#f2c299',
-                                '#f2935c', '#5fd9cd', '#f2d95c', '#f2b84b', '#f27979' ],
+                            backgroundColor: ['#64cbda', '#14b2d1', '#226e96',
+                            '#1e5171', '#c2b380', '#dfce9d', '#ffffff59', '#c3d8d4' ],    
                 
                             borderWidth: 1,
                             hoverBorderColor: "black",
                             hoverBorderWidth: 2,
-                            hoverBackgroundColor: 'rgba(154, 245, 140)',
+                            hoverBackgroundColor: ['#64cbda', '#14b2d1', '#226e96',
+                            '#1e5171', '#c2b380', '#dfce9d', '#ffffff59', '#c3d8d4' ], 
                             pointHoverRadius: 5
                         }],
                     },
@@ -111,7 +112,7 @@ const over_time_emissions = () =>{
                             label: "Individual Emissions (5 past days)",                           
                             data: data.values,
                             fill: false,
-                            borderColor: '#5fd9cd',
+                            borderColor: '#14b2d1',
                             lineTension: 0.1
                             }
                     ]
@@ -136,12 +137,13 @@ const kms_transport_data = () => {
                     datasets: [{
                         label: "Income Vs Expenses",
                         data: data.values,
-                        backgroundColor: ['#9ac2be', '#f2e3b6', '#f2c299',
-                            '#f2935c', '#5fd9cd', '#f2d95c', '#f2b84b', '#f27979' ],    
+                        backgroundColor: ['#64cbda', '#14b2d1', '#226e96',
+                            '#1e5171', '#c2b380', '#dfce9d', '#ffffff59', '#c3d8d4' ],     
                         borderWidth: 1,
                         hoverBorderColor: "black",
                         hoverBorderWidth: 2,
-                        hoverBackgroundColor: 'rgba(154, 245, 140)',
+                        hoverBackgroundColor: ['#64cbda', '#14b2d1', '#226e96',
+                            '#1e5171', '#c2b380', '#dfce9d', '#ffffff59', '#c3d8d4' ], 
                         pointHoverRadius: 5
                     }],
                 },
@@ -186,7 +188,7 @@ const over_time_kms = () => {
                         label: "Individual Kilometers (5 past days)",                            
                         data: data.values,
                         fill: false,
-                        borderColor: '#f2d95c',
+                        borderColor: '#226e96',
                         lineTension: 0.1
                         }
                 ]

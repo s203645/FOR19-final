@@ -17,18 +17,19 @@ efco2={
         'Ferry':{'Diesel':0.11131, 'CNG':0.1131, 'No Fossil Fuel':0},
         'Motorbike':{'Petrol':0.09816,'No Fossil Fuel':0},
         'Bicycle':{'No Fossil Fuel':0},
-        'Walk':{'No Fossil Fuel':0}
+        'Walk':{'No Fossil Fuel':0},
+        'Train':{'Diesel':1.1e-4,'Electric':0}
     }
 
 efch4={
-        'Bus':{'Diesel':2e-5,'CNG':2.5e-3,'Petrol':2e-5,'No Fossil Fuel':0},
         'Bus':{'Diesel':2e-5,'CNG':2.5e-3,'Petrol':2e-5,'No Fossil Fuel':0, 'Electric':0},
         'Car':{'Petrol':3.1e-4,'Diesel':3e-6,'No Fossil Fuel':0, 'Electric':0},
         'Plane':{'Petrol':1.1e-4},
         'Ferry':{'Diesel':3e-5, 'CNG':3e-5,'No Fossil Fuel':0},
         'Motorbike':{'Petrol':2.1e-3,'No Fossil Fuel':0},
         'Bicycle':{'No Fossil Fuel':0},
-        'Walk':{'No Fossil Fuel':0}
+        'Walk':{'No Fossil Fuel':0},
+        'Train':{'Diesel':1.1e-4,'Electric':0}
     }
 
 transport_dict = {

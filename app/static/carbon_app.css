@@ -1,7 +1,12 @@
 /* Header */
 
-.section_header {
+.section_header:nth-of-type(1) {
   border-bottom: 3px solid #f4f7f1;
+  margin: 30px;
+}
+
+.two_emissions_graphs {
+  margin: 30px;
 }
 
 .header_home .box {
@@ -230,4 +235,11 @@
   height: 100%;
 }
 
-
+.two_emissions_graphs .container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  height: 100%;
+}
