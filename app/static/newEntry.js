@@ -9,9 +9,6 @@ transport.addEventListener('change', (event) => {
 
 newEntryButton.addEventListener('click', (event) => {
     newEntry();
-    document.getElementById('transport').value = 'default';
-    document.getElementById('fuel').value = 'default';
-    document.getElementById('kms').value = '';
 });
 
 const newEntry = () => {
@@ -25,8 +22,19 @@ const newEntry = () => {
             
         },
         success: function (response) {
-            console.log(response);
-            refresh()
+            console.log(response)
+            if (response.error === undefined) {
+                refresh();
+                document.getElementById('transport').value = 'default';
+                document.getElementById('fuel').value = 'default';
+                document.getElementById('kms').value = '';
+                $('#new_entry').modal('toggle');
+            }
+            else {
+                console.log('hei')
+                $('#new_entry_error').text(response.error).show();
+            }
+           
         }
     });
 };
@@ -207,3 +215,28 @@ const refresh = () => {
     kms_transport_data();
     over_time_kms();
 }
+
+
+var firstSelect = document.getElementById("transport");
+var secondSelect = document.getElementById("fuel");
+
+const populateSecondSelect = () => {
+    secondSelect.innerHTML = "";
+    var selectedValue = firstSelect.value;
+
+    if (selectedValue === "Car") {
+        var option1 = document.createElement("option");
+        option1.value = "Gasoline";
+        option1.text = "Gasoline";
+        secondSelect.add(option1);
+
+        var option2 = document.createElement("option");
+        option2.value = "Diesel";
+        option2.text = "Diesel";
+        secondSelect.add(option2);
+
+    }
+
+};
+
+
