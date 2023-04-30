@@ -37,7 +37,7 @@
                 <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut tenetur soluta amet, ipsum, provident possimus quo at consequuntur temporibus eius cupiditate. Nostrum aut numquam impedit doloremque quo laborum eaque rerum provident sed est incidunt dolore libero, at distinctio tenetur dicta. Expedita necessitatibus est, illo excepturi dolore fugit animi maiores sequi.
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda itaque impedit libero et mollitia pariatur rerum quibusdam veritatis beatae? Itaque necessitatibus doloribus ab porro totam ullam repellat tenetur fugit maiores!
                 </p>
-                <div class="container-buttons">
+                <div class="container-buttons" id="home_login_field">
                   <div class="button-container">
                     <div class="container_buttons_header_home">
                       <a class="btn_header_home" href="{{url_for('users.register')}}" style="color: black; text-decoration: none;">Register</a>
@@ -161,6 +161,15 @@
       </div>
   </div>  
   </section>
+
+  <script>
+   $(document).ready(function () {
+    let logged_in = "{{ session['logged_in'] }}"
+    if (logged_in == "True") {
+      $("#home_login_field").hide();
+      };
+    });
+  </script>
     {% endblock %}
     
 </body>

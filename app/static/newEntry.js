@@ -9,6 +9,9 @@ transport.addEventListener('change', (event) => {
 
 newEntryButton.addEventListener('click', (event) => {
     newEntry();
+    document.getElementById('transport').value = 'default';
+    document.getElementById('fuel').value = 'default';
+    document.getElementById('kms').value = '';
 });
 
 const newEntry = () => {
@@ -97,11 +100,12 @@ const over_time_emissions = () =>{
     fetch('/my_data/2')  
         .then(response => response.json())
         .then(data => {
+            console.log(data)
             chart = new Chart(ctx, {
                 type: 'line',
                 data:
                     {
-                        labels: data.labes,
+                        labels: data.labels,
                         datasets: [
                             {
                             label: "Individual Emissions (5 past days)",                           
@@ -176,7 +180,7 @@ const over_time_kms = () => {
                 type: 'line',
                 data:
                 {
-                    labels: data.labes,
+                    labels: data.labels,
                     datasets: [
                         {
                         label: "Individual Kilometers (5 past days)",                            

@@ -11,11 +11,11 @@ application = Flask(__name__)
 ### Code GitHub
 application.config['SECRET_KEY'] = "80e49e4bea0c03d64cc40d37f11535b85e93880b43c8c053"
 
-DBVAR = 'postgresql://postgres:FOR19postgres@awseb-e-9vb4b2xpis-stack-awsebrdsdatabase-12gbvbbuwa1e.cjzkzwbxwvyy.us-east-1.rds.amazonaws.com:5432/ebdb'
-application.config['SQLALCHEMY_DATABASE_URI'] = DBVAR 
-application.config['SQLALCHEMY_BINDS'] ={'transport': DBVAR}
+#DBVAR = 'postgresql://postgres:FOR19postgres@awseb-e-9vb4b2xpis-stack-awsebrdsdatabase-12gbvbbuwa1e.cjzkzwbxwvyy.us-east-1.rds.amazonaws.com:5432/ebdb'
+#application.config['SQLALCHEMY_DATABASE_URI'] = DBVAR 
+#application.config['SQLALCHEMY_BINDS'] ={'transport': DBVAR}
 
-#application.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root@127.0.0.1/FOR19'
+application.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root@127.0.0.1/FOR19'
 
 application.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 application.config['SQLALCHEMY_POOL_SIZE'] = 50
