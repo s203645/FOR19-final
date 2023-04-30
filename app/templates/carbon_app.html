@@ -94,6 +94,31 @@
           </div>
         </section> 
 
+        <section class="table_main">
+          <div class="container">
+              <div id="table_confirmation" class="alert alert-success" style="display: none;" > </div>
+              <table class="table" id="entry_table">
+                  <thead class="thead-dark">
+                      <tr>
+                          <th scope="col">User</th>
+                          <th scope="col">Date</th>
+                          <th scope="col">Kilometres</th>
+                          <th scope="col">Transport</th>
+                          <th scope="col">Fuel</th>
+                          <th scope="col">Co2</th>
+                          <th scope="col">Ch4</th>
+                          <th scope="col">Total</th>
+                          <th scope="col">Delete</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                     
+                  </tbody>
+              </table>       
+              </div>
+          </div>
+          </section> 
+
 
      <!-- Modal -->
      <div class="modal fade" id="new_entry" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -127,17 +152,10 @@
             <label for="fuel">Fuel type</label> <br>
             <select id="fuel">
               <option selected disabled value="default">Choose a fuel type</option>
-              <option value="Electric">Electric</option>
-              <option value="Diesel">Diesel</option>
-              <option value="Gasoline">Gasoline</option>
-              <option value="Hybrid">Hybrid</option>
-              <option value="Jet Fuel">Jet fuel</option>
-              <option value="No Fossil Fuel">No fossil fuel</option>
             </select>
             <br>
             <label for="kms">Kilometers</label> <br>
             <input type="number" id="kms" name="kms" placeholder="Number of Kilometers" required>
-            <div class="alert alert-danger" role="alert"  id="new_entry_error"></div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>

@@ -94,6 +94,14 @@ def my_data(arg):
             over_time_kms['labels'].append(date.strftime("%m-%d-%y"))
             over_time_kms['values'].append(total)
         return jsonify(over_time_kms)
+    elif int(arg) == 5:
+        data = db.session.query(Transport.user_id, Transport.date, Transport.kms, Transport.transport, Transport.fuel, Transport.co2, Transport.ch4, Transport.total, Transport.id). \
+        filter(Transport.user_id ==  current_user.id).order_by(Transport.date.desc()).limit(10)
+        list_data = []
+        for i in data:
+            list_data.append((i[0], str(i[1]), i[2], i[3], i[4], i[5], i[6], i[7], i[8]))
+        print(list_data)
+        return jsonify(list_data) 
 
 
     #return jsonify(emissions_by_transport_dict)
@@ -114,3 +122,18 @@ def newEntry():
         except Exception as e:
             return jsonify({'error': str(e)})
     return render_template("new_entry.html")
+
+@carbon_app.route("/deleteEntry", methods=['GET', 'POST'])
+@login_required
+def deleteEntry():
+    if request.method == "POST":
+        #I want to delete an mysel entry
+        try:
+            data = request.form
+            entry = Transport.query.filter_by(id=data['id']).first()
+            db.session.delete(entry)
+            db.session.commit()
+            return jsonify({'success': "Entry deleted successfully!"})
+        except Exception as e:
+            return jsonify({'error': str(e)})
+    

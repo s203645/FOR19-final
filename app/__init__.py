@@ -35,7 +35,7 @@ login_manager.login_message_category = 'info'
 
 with application.app_context():
     db.init_app(application)
-    db.create_all()
+    #db.create_all()
 
 @login_manager.user_loader
 def load_user(user_id):
