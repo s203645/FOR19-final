@@ -4,7 +4,7 @@ from app import db
 from datetime import timedelta, datetime
 from flask_login import login_required, current_user
 import flask
-from sqlalchemy import cast, Date, func
+from sqlalchemy import cast, Date, func, distinct
 
 carbon_app=Blueprint('carbon_app',__name__)
 
@@ -44,6 +44,7 @@ transport_dict = {
 }
 
 @carbon_app.route("/carbon_app")
+@login_required
 def carbon_application():
     return render_template("carbon_app.html")
 
@@ -59,9 +60,9 @@ def my_data(arg):
             emissions_by_transport_dict['values'].append(i[0])
         return jsonify(emissions_by_transport_dict)
     elif int(arg) == 2:
-        emissions_by_date = db.session.query(db.func.sum(Transport.total), Transport.date). \
+        emissions_by_date = db.session.query(db.func.sum(Transport.total), func.date(Transport.date)). \
             filter(Transport.date > (datetime.now() - timedelta(days=5))).filter_by(user_id=current_user.id). \
-            group_by(Transport.date).order_by(Transport.date.asc()).all()
+            group_by(func.date(Transport.date)).order_by(func.date(Transport.date).asc()).all()
         print(emissions_by_date)
         over_time_emissions = {'labels': [], 'values': []}
         for total, date in emissions_by_date:
@@ -80,9 +81,9 @@ def my_data(arg):
         return jsonify(kms_by_transport_dict)
     elif int(arg) == 4:
         print('here')
-        kms_by_date = db.session.query(db.func.sum(Transport.kms), Transport.date). \
+        kms_by_date = db.session.query(db.func.sum(Transport.kms), func.date(Transport.date)). \
         filter(Transport.date > (datetime.now() - timedelta(days=5))).filter_by(user_id=current_user.id). \
-        group_by(Transport.date).order_by(Transport.date.asc()).all()
+        group_by(func.date(Transport.date)).order_by(func.date(Transport.date).asc()).all()
         over_time_kms = {'labels': [], 'values': []}
         for total, date in kms_by_date:
             over_time_kms['labels'].append(date.strftime("%m-%d-%y"))
