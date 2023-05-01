@@ -313,6 +313,25 @@
   flex-wrap: wrap;
 }
 
+.two_emissions_graphs .charts .box, #entry_table_wrapper{
+  border: 2px solid #628354;
+  margin-left: 30px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  background-color: #ccdac4;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 20px;
+  }
+
+/* .two_emissions_graphs .charts .box {
+  border: 1px solid #557249;
+  margin-left: 30px;
+  border-radius: 5px;
+} */
+
 #emissions_by_transport,
 #over_time_emissions,
 #kms_by_transport,

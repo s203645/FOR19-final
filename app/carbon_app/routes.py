@@ -109,7 +109,7 @@ def my_data(arg, key, start, end):
             data = db.session.query(User.username, Transport.date, Transport.kms, Transport.transport, Transport.fuel, Transport.co2, Transport.id). \
             join(User, Transport.user_id == User.id).\
             filter(Transport.user_id ==  current_user.id).filter(and_(Transport.date <= start, Transport.date >=end)). \
-            order_by(Transport.date.desc()).limit(10)
+            order_by(Transport.date.desc()).all()
             list_data = []
             for i in data:
                 list_data.append((i[0], str(i[1]), i[2], i[3], i[4], i[5], i[6]))
