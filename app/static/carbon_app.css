@@ -73,7 +73,7 @@
 }
 
 .btn_carbon_app_new_entry_main,
-.box .btn {
+.box .btn, #filter_all, #filter_individual {
   background-color: #628354;
   border-radius: 3px;
   padding: 10px 20px;
@@ -89,7 +89,7 @@
 }
 
 .btn_carbon_app_new_entry_main:hover,
-.box .btn:hover {
+.box .btn:hover, #filter_all:hover, #filter_individual:hover {
   transform: translateY(2px);
   box-shadow: none;
   color: black;
@@ -97,10 +97,57 @@
 }
 
 .btn_carbon_app_new_entry_main:active,
-.box .btn:focus {
+.box .btn:active {
   transform: translateY(4px);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2),
     inset 0 0 8px rgba(0, 0, 0, 0.4);
+}
+
+#filter_all:focus, #filter_individual:focus, #filter_all:active, #filter_individual:active  {
+  transform: translateY(4px);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2),
+    inset 0 0 8px rgba(0, 0, 0, 0.4);
+  background-color: #557249;
+}
+
+.section_header .container_filter {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 20px;
+}
+
+.container_filter p {
+  margin: 10px;
+}
+
+.table_main .btn {
+  background-color: rgb(220, 48, 48);
+  border-radius: 3px;
+  padding: 10px 10px;
+  text-decoration: none;
+  color: black;
+  margin: 4px 2px;
+  text-align: center;
+  border: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.table_main .btn:hover {
+  transform: translateY(2px);
+  box-shadow: none;
+  color: black;
+  background-color: rgb(192, 30, 30);
+}
+
+.table_main .btn:active, .table_main .btn:focus {
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2);
+  background-color: rgb(192, 30, 30);
+  color: black;
+  transform: translateY(4px);
 }
 
 /* Modal calculator */
@@ -247,8 +294,42 @@
   height: 100%;
 }
 
-#emissions_by_transport, #over_time_emissions, #kms_by_transport, #over_time_kms {
+#emissions_by_transport,
+#over_time_emissions,
+#kms_by_transport,
+#over_time_kms {
   width: 50vh !important;
   height: auto !important;
   margin: 20px !important;
+  right: 20px;
+}
+
+
+
+
+/* Media Queries */
+
+@media (max-width: 768px) {
+  .header_home {
+    flex-direction: column;
+  }
+
+  #emissions_by_transport,
+  #over_time_emissions,
+  #kms_by_transport,
+  #over_time_kms,
+  .container .charts .box {
+    width: 100% !important;
+    height: auto !important;
+    margin: 10px !important;
+  }
+  html,
+  body {
+    background-color: #e7efe5 !important;
+  }
+
+  .footer {
+    width: 100vh;
+  }
+
 }

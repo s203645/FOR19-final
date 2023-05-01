@@ -82,14 +82,14 @@ const emissions_by_transport = (arg) =>{
                     labels: data.labels,
                         datasets: [{
                             data: data.values,
-                            backgroundColor: ['#64cbda', '#14b2d1', '#226e96',
-                            '#1e5171', '#c2b380', '#dfce9d', '#ffffff59', '#c3d8d4', 'black'  ],    
+                            backgroundColor: ['#9e0142', '#d53e4f', '#f46d43',
+                            '#fdae61', '#fee08b', '#e6f598', '#abdda4', '#66c2a5', '#3288bd', '#5e4fa2'  ],    
                 
                             borderWidth: 1,
                             hoverBorderColor: "black",
                             hoverBorderWidth: 2,
-                            hoverBackgroundColor: ['#64cbda', '#14b2d1', '#226e96',
-                            '#1e5171', '#c2b380', '#dfce9d', '#ffffff59', '#c3d8d4', 'black'  ], 
+                            hoverBackgroundColor: ['#9e0142', '#d53e4f', '#f46d43',
+                            '#fdae61', '#fee08b', '#e6f598', '#abdda4', '#66c2a5', '#3288bd', '#5e4fa2'  ],     
                             pointHoverRadius: 5
                         }],
                     },
@@ -136,7 +136,7 @@ const over_time_emissions = (arg) =>{
                             label: "Individual Emissions (5 past days)",                           
                             data: data.values,
                             fill: false,
-                            borderColor: '#14b2d1',
+                            borderColor: '#d53e4f',
                             lineTension: 0.1
                             }
                     ]
@@ -161,13 +161,14 @@ const kms_transport_data = (arg) => {
                     datasets: [{
                         label: "Income Vs Expenses",
                         data: data.values,
-                        backgroundColor: ['#64cbda', '#14b2d1', '#226e96',
-                            '#1e5171', '#c2b380', '#dfce9d', '#ffffff59', '#c3d8d4', 'black' ],     
-                        borderWidth: 1,
-                        hoverBorderColor: "black",
-                        hoverBorderWidth: 2,
-                        hoverBackgroundColor: ['#64cbda', '#14b2d1', '#226e96',
-                            '#1e5171', '#c2b380', '#dfce9d', '#ffffff59', '#c3d8d4', 'black'  ], 
+                        backgroundColor: ['#9e0142', '#d53e4f', '#f46d43',
+                            '#fdae61', '#fee08b', '#e6f598', '#abdda4', '#66c2a5', '#3288bd', '#5e4fa2'  ],    
+                
+                            borderWidth: 1,
+                            hoverBorderColor: "black",
+                            hoverBorderWidth: 2,
+                            hoverBackgroundColor: ['#9e0142', '#d53e4f', '#f46d43',
+                            '#fdae61', '#fee08b', '#e6f598', '#abdda4', '#66c2a5', '#3288bd', '#5e4fa2'  ],     
                         pointHoverRadius: 5
                     }],
                 },
@@ -212,7 +213,7 @@ const over_time_kms = (arg) => {
                         label: "Individual Kilometers (5 past days)",                            
                         data: data.values,
                         fill: false,
-                        borderColor: '#226e96',
+                        borderColor: '#5e4fa2',
                         lineTension: 0.1
                         }
                 ]
@@ -238,7 +239,7 @@ const get_anf_fill_table = (arg) => {
             $('#entry_table').append('<tbody> </tbody>');
             for (let i = 0; i < data[0].length; i++) {
                 console.log(data[i])
-              $('#entry_table tbody:last-child').append(`<tr> <td>` + data[i][0] + `</td> <td>` + data[i][1] +` </td> <td>` + data[i][2] + `</td> <td>` + data[i][3] + `</td> <td>` + data[i][4] + `</td> <td>` + data[i][5] + `</td> <td>` + data[i][6] + `</td>  <td>` + data[i][7] + `</td> <td> <button class="btn btn-danger" onclick="delete_row(`+data[i][8]+`)"> Delete </button> </td> </tr>`);
+              $('#entry_table tbody:last-child').append(`<tr> <td>` + data[i][0] + `</td> <td>` + data[i][1] +` </td> <td>` + data[i][2] + `</td> <td>` + data[i][3] + `</td> <td>` + data[i][4] + `</td> <td>` + Math.round(data[i][5]*100)/100 + `</td> <td>` + data[i][6] + `</td>  <td>` + Math.round(data[i][7]*100)/100 + `</td> <td> <button class="btn btn-danger" onclick="delete_row(`+data[i][8]+`)"> Delete </button> </td> </tr>`);
             }
         })
         .catch(err => {
