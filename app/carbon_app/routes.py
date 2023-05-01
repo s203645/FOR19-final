@@ -1,5 +1,5 @@
 from flask import render_template, Blueprint, request, redirect, url_for, flash, jsonify
-from app.models import Transport
+from app.models import Transport, User
 from app import db
 from datetime import timedelta, datetime
 from flask_login import login_required, current_user
@@ -106,7 +106,8 @@ def my_data(arg, key, start, end):
                 over_time_kms['values'].append(total)
             return jsonify(over_time_kms)
         elif int(arg) == 5:
-            data = db.session.query(Transport.user_id, Transport.date, Transport.kms, Transport.transport, Transport.fuel, Transport.co2, Transport.id). \
+            data = db.session.query(User.username, Transport.date, Transport.kms, Transport.transport, Transport.fuel, Transport.co2, Transport.id). \
+            join(User, Transport.user_id == User.id).\
             filter(Transport.user_id ==  current_user.id).filter(and_(Transport.date <= start, Transport.date >=end)). \
             order_by(Transport.date.desc()).limit(10)
             list_data = []
@@ -155,7 +156,8 @@ def my_data(arg, key, start, end):
                 over_time_kms['values'].append(total)
             return jsonify(over_time_kms)
         elif int(arg) == 5:
-            data = db.session.query(Transport.user_id, Transport.date, Transport.kms, Transport.transport, Transport.fuel, Transport.co2, Transport.id). \
+            data = db.session.query(User.username, Transport.date, Transport.kms, Transport.transport, Transport.fuel, Transport.co2, Transport.id). \
+            join(User, Transport.user_id == User.id). \
             filter(and_(Transport.date <= start, Transport.date >=end)). \
             order_by(Transport.date.desc()).all()
             list_data = []
@@ -174,8 +176,8 @@ def newEntry():
         try:
             data = request.form
             transport = transport_dict[data['transport']]
-            co2 = float(data['kms']) * efco2[transport][data['fuel']]
-            ch4 = float(data['kms']) * efch4[transport][data['fuel']]
+            co2 = round(float(data['kms']) * efco2[transport][data['fuel']], 2)
+            ch4 = round(float(data['kms']) * efch4[transport][data['fuel']],2)
             emissions = Transport(data['kms'],transport, data['fuel'], co2, ch4, co2+ch4, current_user.id)
             db.session.add(emissions)
             db.session.commit()
