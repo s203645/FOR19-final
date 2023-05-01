@@ -73,7 +73,9 @@
 }
 
 .btn_carbon_app_new_entry_main,
-.box .btn, #filter_all, #filter_individual {
+.box .btn,
+#filter_all,
+#filter_individual, #filter_date {
   background-color: #628354;
   border-radius: 3px;
   padding: 10px 20px;
@@ -89,7 +91,9 @@
 }
 
 .btn_carbon_app_new_entry_main:hover,
-.box .btn:hover, #filter_all:hover, #filter_individual:hover {
+.box .btn:hover,
+#filter_all:hover,
+#filter_individual:hover, #filter_date:hover {
   transform: translateY(2px);
   box-shadow: none;
   color: black;
@@ -97,13 +101,16 @@
 }
 
 .btn_carbon_app_new_entry_main:active,
-.box .btn:active {
+.box .btn:active, #filter_date:active {
   transform: translateY(4px);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2),
     inset 0 0 8px rgba(0, 0, 0, 0.4);
 }
 
-#filter_all:focus, #filter_individual:focus, #filter_all:active, #filter_individual:active  {
+#filter_all:focus,
+#filter_individual:focus,
+#filter_all:active,
+#filter_individual:active {
   transform: translateY(4px);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2),
     inset 0 0 8px rgba(0, 0, 0, 0.4);
@@ -143,7 +150,8 @@
   background-color: rgb(192, 30, 30);
 }
 
-.table_main .btn:active, .table_main .btn:focus {
+.table_main .btn:active,
+.table_main .btn:focus {
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2);
   background-color: rgb(192, 30, 30);
   color: black;
@@ -276,53 +284,53 @@
 
 /* My Data */
 
-.charts {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  flex-wrap: wrap;
-  height: 100%;
+#filter_all, #filter_individual, #filter_date, #filter_end, #filter_start {
+  margin: 5px;
 }
 
-.two_emissions_graphs .container {
+#filter_start, #filter_end {
+  padding: 10px;
+}
+
+.two_emissions_graphs .charts {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  height: 100%;
 }
 
 #emissions_by_transport,
 #over_time_emissions,
 #kms_by_transport,
 #over_time_kms {
+  margin: 30px;
   width: 50vh !important;
   height: auto !important;
-  margin: 20px !important;
-  right: 20px;
 }
-
-
-
 
 /* Media Queries */
 
-@media (max-width: 768px) {
-  .header_home {
-    flex-direction: column;
-  }
+@media (max-width: 800px) {
 
+  .two_emissions_graphs .charts, home {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  
   #emissions_by_transport,
   #over_time_emissions,
   #kms_by_transport,
-  #over_time_kms,
-  .container .charts .box {
+  #over_time_kms {
     width: 100% !important;
     height: auto !important;
     margin: 10px !important;
   }
+
+  
   html,
   body {
     background-color: #e7efe5 !important;
@@ -331,5 +339,4 @@
   .footer {
     width: 100vh;
   }
-
 }

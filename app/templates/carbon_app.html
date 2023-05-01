@@ -68,31 +68,35 @@
           <div class="container">
             <div class="home">
               <h2 class="text">My Data</h2>
-                <div class="container_filter"></div>
+                <div class="container_filter">
                   <p>Filter by:</p>
                   <button type="button" value="active" class="btn btn-success" id="filter_individual"> Only me </button>
-                  <button type="button" value="" class="btn btn-secondary" id="filter_all"> Every employee </button>
+                  <button type="button" value="" class="btn btn-secondary" id="filter_all"> Every employee </button> 
+                </div>
+                <div class="container_filter">
                   <input type="date" name="filter_start" id="filter_start"> 
                   <input type="date" name="filter_end" id="filter_end">
                   <button type="button" value="" class="btn btn-success" id="filter_date"> Update timerange </button>
                 </div>
             </div>
+          </div>
+        </section>
+
+        <section class="two_emissions_graphs">
             <div class="charts">
               <div class="box">
                   <canvas id="emissions_by_transport"></canvas>
               </div>
               <div class="box">
                 <canvas id="kms_by_transport"></canvas>
+              </div>
             </div>
-              
-            </div>
-          </div>
         </section>
 
 
          <!-- Two Emissions Graph Section -->
         <section class="two_emissions_graphs">
-          <div class="container">
+          <div class="charts">
             <div class="box">
               <canvas id="over_time_emissions"></canvas> 
           </div>

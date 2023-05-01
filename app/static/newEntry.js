@@ -125,7 +125,7 @@ const emissions_by_transport = (arg, start, date) =>{
                     options: {
                             title: {
                                 display: true,
-                                    text: "Emissions by type of transport (5 last days)",
+                                    text: "Emissions by type of transport",
                                         fontColor: "black",
                                         fontSize: 20,
                             },
@@ -162,7 +162,7 @@ const over_time_emissions = (arg, start, end) =>{
                         labels: data.labels,
                         datasets: [
                             {
-                            label: "Individual Emissions (5 past days)",                           
+                            label: "Individual Emissions",                           
                             data: data.values,
                             fill: false,
                             borderColor: '#d53e4f',
@@ -204,7 +204,7 @@ const kms_transport_data = (arg, start, end) => {
                 options: {
                         title: {
                             display: true,
-                                text: "Kilometers by type of transport (5 last days)",
+                                text: "Kilometers by type of transport",
                                 fontColor: "black",
                                 fontSize: 20,
                         },
@@ -239,7 +239,7 @@ const over_time_kms = (arg, start, end) => {
                     labels: data.labels,
                     datasets: [
                         {
-                        label: "Individual Kilometers (5 past days)",                            
+                        label: "Individual Kilometers",                            
                         data: data.values,
                         fill: false,
                         borderColor: '#5e4fa2',
