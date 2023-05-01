@@ -236,10 +236,15 @@ const get_anf_fill_table = (arg) => {
             console.log(data)
             $('#entry_table tbody').remove()
             $('#entry_table').append('<tbody> </tbody>');
-            for (let i = 0; i < data[0].length; i++) {
+            for (let i = 0; i < data.length; i++) {
+                console.log(i)
                 console.log(data[i])
               $('#entry_table tbody:last-child').append(`<tr> <td>` + data[i][0] + `</td> <td>` + data[i][1] +` </td> <td>` + data[i][2] + `</td> <td>` + data[i][3] + `</td> <td>` + data[i][4] + `</td> <td>` + data[i][5] + `</td> <td>` + data[i][6] + `</td>  <td>` + data[i][7] + `</td> <td> <button class="btn btn-danger" onclick="delete_row(`+data[i][8]+`)"> Delete </button> </td> </tr>`);
             }
+            $('#entry_table').DataTable( {
+                destroy:true,  
+              });
+
         })
         .catch(err => {
             console.log(err);
