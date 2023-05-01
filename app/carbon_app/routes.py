@@ -9,38 +9,42 @@ from sqlalchemy import cast, Date, func, distinct
 carbon_app=Blueprint('carbon_app',__name__)
 
 efco2={
-        'Bus':{'Diesel':0.10231,'CNG':0.08,'Petrol':0.10231,'No Fossil Fuel':0},
-        'Car':{'Petrol':0.18592,'Diesel':0.16453,'No Fossil Fuel':0, 'Electric':0},
-        'Bus':{'Diesel':0.10231,'CNG':0.08,'Petrol':0.10231,'No Fossil Fuel':0, 'Electric':0},
-        'Car':{'Petrol':0.18592,'Diesel':0.16453,'No Fossil Fuel':0,    'Electric':0},
-        'Plane':{'Petrol':0.24298},
-        'Ferry':{'Diesel':0.11131, 'CNG':0.1131, 'No Fossil Fuel':0},
-        'Motorbike':{'Petrol':0.09816,'No Fossil Fuel':0},
-        'Bicycle':{'No Fossil Fuel':0},
         'Walk':{'No Fossil Fuel':0},
-        'Train':{'Diesel':1.1e-4,'Electric':0}
+        'Bicycle':{'No Fossil Fuel':0},
+        'Ferry':{'Diesel':0.019},
+        'Train':{'Diesel':0.041,'Electric':0},
+        'Car':{'Diesel':0.171, 'Gasoline':0.192, 'Hybrid':0.109, 'Electric':0.053},
+        'Motorbike':{'Gasoline':0.103},
+        'Bus':{'Diesel':0.105,'Electric':0},
+        'Long distance flight':{'Jet Fuel':0.150},
+        'Domestic flight':{'Jet Fuel':0.255},
+        'Light rail and tram':{'Electric':0.035}
     }
 
 efch4={
-        'Bus':{'Diesel':2e-5,'CNG':2.5e-3,'Petrol':2e-5,'No Fossil Fuel':0, 'Electric':0},
-        'Car':{'Petrol':3.1e-4,'Diesel':3e-6,'No Fossil Fuel':0, 'Electric':0},
-        'Plane':{'Petrol':1.1e-4},
-        'Ferry':{'Diesel':3e-5, 'CNG':3e-5,'No Fossil Fuel':0},
-        'Motorbike':{'Petrol':2.1e-3,'No Fossil Fuel':0},
-        'Bicycle':{'No Fossil Fuel':0},
         'Walk':{'No Fossil Fuel':0},
-        'Train':{'Diesel':1.1e-4,'Electric':0}
-    }
+        'Bicycle':{'No Fossil Fuel':0},
+        'Ferry':{'Diesel':0},
+        'Train':{'Diesel':0,'Electric':0},
+        'Car':{'Diesel':0, 'Gasoline':0, 'Hybrid':0, 'Electric':0},
+        'Motorbike':{'Gasoline':0,'No Fossil Fuel':0},
+        'Bus':{'Diesel':0,'Electric':0},
+        'Long distance flight':{'Jet Fuel':0},
+        'Domestic flight':{'Jet Fuel':0},
+        'Light rail and tram':{'Electric':0}
+     }
 
 transport_dict = {
     'bus': 'Bus',
     'car': 'Car',
-    'plane': 'Plane',
+    'plane': 'Long distance flight',
+    'plane-up': 'Domestic flight',
     'ferry': 'Ferry',
     'motorcycle': 'Motorbike',
     'bicycle': 'Bicycle',
     'person-walking': 'Walk',
-    'train': 'Train'
+    'train': 'Train',
+    'train-tram': 'Light rail and tram'
 }
 
 @carbon_app.route("/carbon_app")
