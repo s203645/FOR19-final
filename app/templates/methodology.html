@@ -24,26 +24,7 @@
                 Paper
               </button>
               <a href="{{url_for('carbon_app.carbon_application')}}" class="btn" style="color: black; text-decoration: none;">Carbon App</a>
-              <p> 
-                Before designing our calculator, it is important to understand the different methods used to compare modes of transport 
-                and measure their emissions. The most common approach is to calculate the amount of carbon dioxide equivalent (\(CO_2e\)) 
-                emissions for transporting a passenger by a defined mode of transport over one kilometer (passenger kilometer). This 
-                metric allows for emissions data to be standardized per individual passenger, regardless of the transportation mode. <br> <br>
 
-                The \(CO_2e\) metric represents the amount of GHG emissions that have been converted into an equivalent
-                amount of \(CO_2\). The global warming potential (GWP) parameter is used to convert these
-                emissions, such as \(N_{2}O\), \(CH_{4}\) and other GHG emissions, into a common unit of measurement.
-                By converting GHG emissions into \(CO_2\) equivalents, it becomes easier to compare the environmental impact 
-                of different modes of transportation. Thus, \(CO_2e\) considers factors such as the type and amount of fuel used, 
-                making it a comprehensive and accurate measurement for assessing the environmental impact. <br> <br>
-
-                To show how \(CO_2e\) works, we will provide a simple example with methane (\(CH_{4}\)). Methane has a GWP of approximately 27,
-                meaning that the emission of 1 kg of \(CH_{4}\) equals the emission of 27 kg of \(CO_2\). This implies that the
-                emission of 1 kg of \(CH_{4}\) and 27 kg of \(CO_2\) has the same adverse environmental impact. We can calculate the \(CO_2e\)
-                using the following equation, where “a” is number of kg emitted and “c” is the GWP:
-
-
-              </p>
             </div>
           </div>
         </div>
@@ -55,6 +36,26 @@
           <div class="developers d_team">
           </div>
           <div class="formulas">
+            <p style="text-align: justify;"> 
+              Before designing our calculator, it is important to understand the different methods used to compare modes of transport 
+              and measure their emissions. The most common approach is to calculate the amount of carbon dioxide equivalent (\(CO_2e\)) 
+              emissions for transporting a passenger by a defined mode of transport over one kilometer (passenger kilometer). This 
+              metric allows for emissions data to be standardized per individual passenger, regardless of the transportation mode. <br> <br>
+
+              The \(CO_2e\) metric represents the amount of GHG emissions that have been converted into an equivalent
+              amount of \(CO_2\). The global warming potential (GWP) parameter is used to convert these
+              emissions, such as \(N_{2}O\), \(CH_{4}\) and other GHG emissions, into a common unit of measurement.
+              By converting GHG emissions into \(CO_2\) equivalents, it becomes easier to compare the environmental impact 
+              of different modes of transportation. Thus, \(CO_2e\) considers factors such as the type and amount of fuel used, 
+              making it a comprehensive and accurate measurement for assessing the environmental impact. <br> <br>
+
+              To show how \(CO_2e\) works, we will provide a simple example with methane (\(CH_{4}\)). Methane has a GWP of approximately 27,
+              meaning that the emission of 1 kg of \(CH_{4}\) equals the emission of 27 kg of \(CO_2\). This implies that the
+              emission of 1 kg of \(CH_{4}\) and 27 kg of \(CO_2\) has the same adverse environmental impact. We can calculate the \(CO_2e\)
+              using the following equation, where “a” is number of kg emitted and “c” is the GWP:
+
+
+            </p>
             <div class="box-formula">
               <p style="text-align: center;">
                 Equation 1: Converting the emission of a GHG to \(CO_2e\) <br><br>
@@ -99,11 +100,25 @@
               per passenger kilometer traveled as follows:
             </p>
             <div class="box-formula">
-              <p>
-                \[{CO_2e \over d} = {2\ kg * 27 + 0,2\ kg * 273 + 10\ kg * 1 \over 100\ km}\] <br><br>
+              <p style="text-align: center;">
+                Example: <br>
+                \[{CO_2e \over d} = {2\ kg * 27 + 0,2\ kg * 273 + 10\ kg * 1 \over 100\ km}\] <br>
                 \[= {CO_2e \over d} = 1,186 {kg \over km}\]
               </p>
           </div>
+          <p style="text-align: center;">
+            As evidenced by this example, we need detailed information about how many kilograms of GHGs that are emitted, as well 
+            as the corresponding GWP, to calculate the \(CO_{2}e\) emission per passenger kilometer traveled. To simplify the process and 
+            make our app more user-friendly, we have decided to use average of \(CO_{2}e\) emitted per passenger kilometer for each mode 
+            of transport, rather than requiring exact emission factors for each individual vehicle. For example, instead of using 
+            different emission factors for cars made by different manufacturers, we will use a single average emission factor for 
+            cars using a given power source (electric, hybrid, diesel, and gasoline). This factor represents the average grams of 
+            \(CO_{2}e\) emitted per passenger kilometer for a particular mode of transport, for example 192 grams of \(CO_{2}e\) per passenger 
+            kilometer for gasoline cars. While we acknowledge that this approach may result in some imprecision, we believe it is a 
+            reasonable trade-off to make the user interface cleaner and more intuitive. It is also very important to note that we 
+            are relying on experts and data collected from the entire world, to provide us with accurate emission factors and 
+            calculations for \(CO_{2}e\).
+          </p>
           </div> 
       </section>
            <!-- Modal -->

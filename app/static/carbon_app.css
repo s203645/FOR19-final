@@ -316,6 +316,9 @@
     margin-bottom: 10px;
   }
 
+  .table_main {
+    padding-bottom: calc(100vh - (var(--footer-height)));
+  }
 
 #emissions_by_transport,
 #over_time_emissions,
@@ -344,7 +347,8 @@
   #over_time_kms {
     width: 100% !important;
     height: auto !important;
-    margin: 10px !important;
+    margin: 0px !important;
+    padding: 0px;
   }
 
   #entry_table_wrapper {
@@ -358,6 +362,19 @@
     color: #333;
     margin-bottom: 10px;
     width: 100vh;
+    margin-left: 0px;
+  }
+
+  .table_main .container {
+    padding: 0px;
+  }
+
+  .two_emissions_graphs .charts .box {
+    margin: 0px;
+  }
+  
+  .two_emissions_graphs {
+    margin: 0px;
   }
 
   html,
