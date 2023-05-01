@@ -132,7 +132,7 @@
             </p>
         
           <div class="container_buttons_developers">
-            <a class="btn_developers" data-bs-toggle="modal" data-bs-target="#cv_Modal"> Curriculum </a> <!-- bs-target links to the id of the modal-->
+            <a class="btn_developers" data-bs-toggle="modal" data-bs-target="#cv_Modal" data-bs-whatever="CV_{{name}}.pdf"> Curriculum </a> <!-- bs-target links to the id of the modal-->
           </div>
           <div class="container_buttons_developers">
             <a class="btn_developers" href="{{url}}" target="_blank"> <!-- Using _blank to open a new tab-->
@@ -152,14 +152,14 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <iframe src="static/CV.pdf" width="100%" height="100%"></iframe>  <!-- Using iframe to view the pdf file.-->
+            <iframe id="cv_frame" src="" width="100%" height="100%"></iframe>  <!-- Using iframe to view the pdf file.-->
           </div>
           <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
           </div>
       </div>
       </div>
-  </div>  
+    </div>  
   </section>
 
   <script>
@@ -169,6 +169,16 @@
       $("#home_login_field").hide();
       };
     });
+  </script>
+
+  <script>
+    var cvModal = document.getElementById('cv_Modal')
+    cvModal.addEventListener('show.bs.modal', function (event) {
+    var button = event.relatedTarget
+    var path = button.getAttribute('data-bs-whatever')
+    var frame = document.getElementById('cv_frame')
+    frame.src = "static/" +recipient
+  })
   </script>
     {% endblock %}
     

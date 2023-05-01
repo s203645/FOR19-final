@@ -22,30 +22,14 @@
             <div class="box">
               <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut tenetur soluta amet, ipsum, provident possimus quo at consequuntur temporibus eius cupiditate. Nostrum aut numquam impedit doloremque quo laborum eaque rerum provident sed est incidunt dolore libero, at distinctio tenetur dicta. Expedita necessitatibus est, illo excepturi dolore fugit animi maiores sequi. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda itaque impedit libero et mollitia pariatur rerum quibusdam veritatis beatae? Itaque necessitatibus doloribus ab porro totam ullam repellat tenetur fugit maiores!
               </p>
-              <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#infoModal">
+              <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#paper_Modal">
                 Paper
               </button>
               <a href="{{url_for('carbon_app.carbon_application')}}" class="btn" style="color: black; text-decoration: none;">Carbon App</a>
             </div>
           </div>
         </div>
-        <!-- Modal -->
-        <div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Paper</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti accusamus asperiores ipsam assumenda eligendi pariatur praesentium itaque sit sunt, rerum laborum animi id blanditiis sed aut sequi maxime qui. Odio!
-                </div>
-                <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
-            </div>
-            </div>
-      </div>
+       
     </section> 
       <!-- Formulas-->
       <section class="section_formulas">
@@ -72,6 +56,23 @@
             </div>
           </div> 
       </section>
+           <!-- Modal -->
+     <div class="modal fade" id="paper_Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg " style="height: 80%;" >
+      <div class="modal-content" style="height:100%">
+          <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Paper</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <iframe id="paper_frame" src="static/Essay.pdf" width="100%" height="100%"></iframe>  <!-- Using iframe to view the pdf file.-->
+          </div>
+          <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+      </div>
+      </div>
+    </div>  
 
     {% endblock %}
     
