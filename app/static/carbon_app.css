@@ -25,42 +25,20 @@
   justify-content: center;
 }
 
-/* Section new entries calculators*/
+/* Section new entries */
 
 .section_new_entries {
   padding: 20px;
 }
 
-.section_carbon_app_new_entry_main {
-  background-color: #f4f7f1;
-}
-
-.carbon_app_new_entry_main {
-  align-items: center;
-  background: #f4f7f1;
-}
-
-.carbon_app_new_entry_main .box {
-  background-color: #ccdac4;
-  color: black;
-  border-radius: 10px;
-  margin: 10px;
-  padding: 15px 20px;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
-  height: 260px;
-  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease;
-}
-
-.carbon_app_new_entry_main .box:nth-of-type(8) {
-  margin-bottom: 20px;
-}
-
 .instructions_calculator {
   text-align: center;
   min-height: 50px;
+}
+
+.section_new_entries {
+  margin-bottom: 20px;
+  border-bottom: 3px solid #f4f7f1;
 }
 
 /* Buttons */
@@ -313,7 +291,7 @@
   flex-wrap: wrap;
 }
 
-.two_emissions_graphs .charts .box, #entry_table_wrapper{
+.two_emissions_graphs .charts .box {
   border: 2px solid #628354;
   margin-left: 30px;
   border-radius: 10px;
@@ -323,14 +301,21 @@
   font-family: Arial, sans-serif;
   font-size: 16px;
   color: #333;
-  margin-bottom: 20px;
   }
 
-/* .two_emissions_graphs .charts .box {
-  border: 1px solid #557249;
-  margin-left: 30px;
-  border-radius: 5px;
-} */
+  #entry_table_wrapper {
+    border: 2px solid #628354;
+    margin-left: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    background-color: #ccdac4;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+
 
 #emissions_by_transport,
 #over_time_emissions,
@@ -362,7 +347,19 @@
     margin: 10px !important;
   }
 
-  
+  #entry_table_wrapper {
+    border: 2px solid #628354;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    background-color: #ccdac4;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 10px;
+    width: 100vh;
+  }
+
   html,
   body {
     background-color: #e7efe5 !important;

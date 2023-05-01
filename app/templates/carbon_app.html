@@ -69,14 +69,18 @@
             <div class="home">
               <h2 class="text">My Data</h2>
                 <div class="container_filter">
+                  <div class="box_employee_filter">
                   <p>Filter by:</p>
                   <button type="button" value="active" class="btn btn-success" style="background-color: #628354;" id="filter_individual"> Only me </button>
                   <button type="button" value="" class="btn btn-secondary" style="background-color: #9395935e; color: grey; box-shadow: none;" id="filter_all"> Every employee </button> 
+                  </div>
                 </div>
                 <div class="container_filter">
+                  <div class="box_date_filter">
                   <input type="date" name="filter_start" id="filter_start"> 
                   <input type="date" name="filter_end" id="filter_end">
                   <button type="button" value="" class="btn btn-success" id="filter_date"> Update timerange </button>
+                  </div>
                 </div>
             </div>
           </div>
@@ -117,7 +121,7 @@
                           <th> Kilometres</th>
                           <th> Transport</th>
                           <th> Fuel</th>
-                          <th> Co2e</th>
+                          <th> Co2e (kg)</th>
                           <th> Delete</th>
                       </tr>
                   </thead>

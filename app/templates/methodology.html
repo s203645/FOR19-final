@@ -20,12 +20,30 @@
         </div>
           <div class="header_home">
             <div class="box">
-              <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut tenetur soluta amet, ipsum, provident possimus quo at consequuntur temporibus eius cupiditate. Nostrum aut numquam impedit doloremque quo laborum eaque rerum provident sed est incidunt dolore libero, at distinctio tenetur dicta. Expedita necessitatibus est, illo excepturi dolore fugit animi maiores sequi. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda itaque impedit libero et mollitia pariatur rerum quibusdam veritatis beatae? Itaque necessitatibus doloribus ab porro totam ullam repellat tenetur fugit maiores!
-              </p>
               <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#paper_Modal">
                 Paper
               </button>
               <a href="{{url_for('carbon_app.carbon_application')}}" class="btn" style="color: black; text-decoration: none;">Carbon App</a>
+              <p> 
+                Before designing our calculator, it is important to understand the different methods used to compare modes of transport 
+                and measure their emissions. The most common approach is to calculate the amount of carbon dioxide equivalent (\(CO_2e\)) 
+                emissions for transporting a passenger by a defined mode of transport over one kilometer (passenger kilometer). This 
+                metric allows for emissions data to be standardized per individual passenger, regardless of the transportation mode. <br> <br>
+
+                The \(CO_2e\) metric represents the amount of GHG emissions that have been converted into an equivalent
+                amount of \(CO_2\). The global warming potential (GWP) parameter is used to convert these
+                emissions, such as \(N_{2}O\), \(CH_{4}\) and other GHG emissions, into a common unit of measurement.
+                By converting GHG emissions into \(CO_2\) equivalents, it becomes easier to compare the environmental impact 
+                of different modes of transportation. Thus, \(CO_2e\) considers factors such as the type and amount of fuel used, 
+                making it a comprehensive and accurate measurement for assessing the environmental impact. <br> <br>
+
+                To show how \(CO_2e\) works, we will provide a simple example with methane (\(CH_{4}\)). Methane has a GWP of approximately 27,
+                meaning that the emission of 1 kg of \(CH_{4}\) equals the emission of 27 kg of \(CO_2\). This implies that the
+                emission of 1 kg of \(CH_{4}\) and 27 kg of \(CO_2\) has the same adverse environmental impact. We can calculate the \(CO_2e\)
+                using the following equation, where “a” is number of kg emitted and “c” is the GWP:
+
+
+              </p>
             </div>
           </div>
         </div>
@@ -35,25 +53,57 @@
       <section class="section_formulas">
         <div class="container">
           <div class="developers d_team">
-            <h1 style="text-align: center;"> Formulas</h1>
           </div>
           <div class="formulas">
             <div class="box-formula">
-                Sum:
-                \[ \sum_{n=1}^{\infty} 2^{-n} = 1 \]
+              <p style="text-align: center;">
+                Equation 1: Converting the emission of a GHG to \(CO_2e\) <br><br>
+                \[ac = CO_{2}e\]
+              </p>
             </div>
+            <p style="text-align: center;">
+              If we emit 1 kg of \(CH_{4}\), which has a GWP of 27 kg as previously stated, the equation will look as follows:
+            </p>
             <div class="box-formula">
-                Limits:
-                \[ \lim_{x\to\infty} f(x) \]
+                <p style="text-align: center;">
+                  Equation 2: Converting the emission of a methane to \(CO_2e\) <br><br>
+                  \[1\ kg\ CH_{4} * 27\ (GWP) = 27\ kg\ (CO_2e)\]
+                </p>
             </div>
+            <p style="text-align: center;">
+              When combusting fossil fuels, several GHGs are emitted. To calculate the \(CO_2e\) emission from the combustion, we must
+              convert the emissions from each GHG to \(CO_2e\). We can do this by multiplying the number of kilograms emitted of the
+              given GHG (a), with the GWP of the GHG (c). Then we have to sum the \(CO_2e\) of all the GHGs. We can express this as
+              in the equation below, where “i” is a given GHG and “n” is the number of GHGs.
+            </p>
             <div class="box-formula">
-                Expression:
-                \[ x^2 + y^2 = z^2 \]
+                <p>
+                  Equation 3: Converting the emissions of GHGs to \(CO_2e\) <br><br>
+                  \[CO_{2}e = \sum_{i=1}^{n} a_{i}c_{i}\]
+                </p>
             </div>
+            <p style="text-align: center;">
+              If we want to express the \(CO_2e\) per passenger kilometer traveled, we can modify the equation, where “d”
+              is the number of passenger miles traveled.
+            </p>
             <div class="box-formula">
-                Integral:
-                \[ \int_{a}^{b} x^2 \,dx \]
+                <p>
+                  Equation 4: Converting the emissions of GHGs to \(CO_2e \over d\) <br><br>
+                  \[{CO_2e \over d} = {1 \over d} \sum_{i=1}^{n} a_{i}c_{i}\]
+                </p>
             </div>
+            <p style="text-align: center;">
+              To demonstrate the use of equation 4, we will provide a simple example as follows. Alice travels 100 passenger 
+              kilometers, which emits 2 kg \(CH_{4}\) (i=1), 0,2 kg \(N_{2}O\) (i=2) and 10 kg \(CO_2\) (i=3). \(N_{2}O's\) GWP is
+              273 and \(CO_{2}\ 's\) GWP is 1. Given this information, we can calculate Alice's \(CO_{2}e\) emission
+              per passenger kilometer traveled as follows:
+            </p>
+            <div class="box-formula">
+              <p>
+                \[{CO_2e \over d} = {2\ kg * 27 + 0,2\ kg * 273 + 10\ kg * 1 \over 100\ km}\] <br><br>
+                \[= {CO_2e \over d} = 1,186 {kg \over km}\]
+              </p>
+          </div>
           </div> 
       </section>
            <!-- Modal -->
