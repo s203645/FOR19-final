@@ -27,7 +27,8 @@ def login():
 def register():
     if request.method == "POST":
         data = request.form
-        new_user = User((data["f:name"] +" " + data["l:name"]), data['email'], data['password'])
+        user_hasedh_password = bcrypt.generate_password_hash(data['password']).decode('utf-8')
+        new_user = User((data["f:name"] +" " + data["l:name"]), data['email'], user_hasedh_password)
         db.session.add(new_user)
         db.session.commit()
         login_user(User.valid_login(data["email"], data["password"]))

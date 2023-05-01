@@ -1,6 +1,9 @@
 const transport = document.getElementById('transport');
 const transport_icon = document.getElementById('transport_icon');
 const newEntryButton = document.getElementById('newEntryButton');
+const filter_individual = document.getElementById('filter_individual');
+const filter_all = document.getElementById('filter_all');
+
 
 transport.addEventListener('change', (event) => {
     console.log(event.target.value);
@@ -9,9 +12,19 @@ transport.addEventListener('change', (event) => {
 
 newEntryButton.addEventListener('click', (event) => {
     newEntry();
-    document.getElementById('transport').value = 'default';
-    document.getElementById('fuel').value = 'default';
-    document.getElementById('kms').value = '';
+});
+
+filter_individual.addEventListener('click', (event) => {
+    refresh(0);
+    filter_individual.value = "active";
+    filter_all.value = "inactive";
+});
+
+filter_all.addEventListener('click', (event) => {
+    refresh(1);
+    filter_all.value = "active";
+    filter_individual.value = "inactive";
+
 });
 
 const newEntry = () => {
@@ -25,8 +38,18 @@ const newEntry = () => {
             
         },
         success: function (response) {
-            console.log(response);
-            refresh()
+            console.log(response)
+            if (response.error === undefined) {
+                let status = document.getElementById('filter_individual').value;
+                if (status === 'active') { refresh(0); } else { refresh(1); }
+                document.getElementById('transport').value = 'default';
+                document.getElementById('fuel').value = 'default';
+                document.getElementById('kms').value = '';
+                $('#new_entry').modal('toggle');
+            }
+            else {
+                console.log(response.error)               
+            }           
         }
     });
 };
@@ -39,17 +62,18 @@ Chart.scaleService.updateScaleDefaults('linear', {
 });
 
 $(document).ready(function () {
-    emissions_by_transport();
-    over_time_emissions();
-    kms_transport_data();
-    over_time_kms();
+    emissions_by_transport(0);
+    over_time_emissions(0);
+    kms_transport_data(0);
+    over_time_kms(0);
+    get_anf_fill_table(0);
 });
 
-const emissions_by_transport = () =>{
+const emissions_by_transport = (arg) =>{
     const ctx = document.getElementById('emissions_by_transport').getContext('2d');
     let chart = null;
 
-    fetch('/my_data/1')
+    fetch('/my_data/1/' + arg)
         .then(response => response.json())
         .then(data => {
             chart = new Chart(ctx, {
@@ -95,10 +119,10 @@ const emissions_by_transport = () =>{
         });
 }
 
-const over_time_emissions = () =>{
+const over_time_emissions = (arg) =>{
     const ctx = document.getElementById('over_time_emissions').getContext('2d');
     let chart = null;
-    fetch('/my_data/2')  
+    fetch('/my_data/2/' +arg)  
         .then(response => response.json())
         .then(data => {
             console.log(data)
@@ -125,9 +149,9 @@ const over_time_emissions = () =>{
         });
 }
 
-const kms_transport_data = () => { 
+const kms_transport_data = (arg) => { 
     const kms_by_transport = document.getElementById('kms_by_transport').getContext('2d');
-    fetch('/my_data/3')
+    fetch('/my_data/3/' + arg)
         .then(response => response.json())
         .then(data => {
              new Chart(kms_by_transport, {
@@ -173,9 +197,9 @@ const kms_transport_data = () => {
         });
 }
 
-const over_time_kms = () => {
+const over_time_kms = (arg) => {
     const over_time_kms = document.getElementById("over_time_kms").getContext("2d");
-    fetch('/my_data/4')
+    fetch('/my_data/4/' + arg)
         .then(response => response.json())
         .then(data => {
             new Chart(over_time_kms, {
@@ -201,9 +225,123 @@ const over_time_kms = () => {
         });
 }
 
-const refresh = () => {
-    emissions_by_transport();
-    over_time_emissions();
-    kms_transport_data();
-    over_time_kms();
+var del_button = document.createElement("button");
+del_button.classList.add("btn", "btn-danger", "btn-sm");
+del_button.innerHTML = "Delete";
+
+const get_anf_fill_table = (arg) => {
+    fetch('/my_data/5/' + arg)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+            $('#entry_table tbody').remove()
+            $('#entry_table').append('<tbody> </tbody>');
+            for (let i = 0; i < data[0].length; i++) {
+                console.log(data[i])
+              $('#entry_table tbody:last-child').append(`<tr> <td>` + data[i][0] + `</td> <td>` + data[i][1] +` </td> <td>` + data[i][2] + `</td> <td>` + data[i][3] + `</td> <td>` + data[i][4] + `</td> <td>` + data[i][5] + `</td> <td>` + data[i][6] + `</td>  <td>` + data[i][7] + `</td> <td> <button class="btn btn-danger" onclick="delete_row(`+data[i][8]+`)"> Delete </button> </td> </tr>`);
+            }
+        })
+        .catch(err => {
+            console.log(err);
+        });
 }
+
+const delete_row = (row) => {
+    $.ajax({
+        url: '/deleteEntry',
+        type: 'POST',
+        data: {
+           id:row           
+        },
+        success: function (response) {
+            console.log(response);
+            get_anf_fill_table();
+            $('#table_confirmation').text("Entry deleted successfully").show();
+            setTimeout(function() { $("#table_confirmation").hide(); }, 3000);
+        }
+    });
+}
+
+
+const refresh = (arg) => {
+    emissions_by_transport(arg);
+    over_time_emissions(arg);
+    kms_transport_data(arg);
+    over_time_kms(arg);
+    get_anf_fill_table(arg);
+}
+
+
+var firstSelect = document.getElementById("transport");
+var secondSelect = document.getElementById("fuel");
+
+const populateSecondSelect = () => {
+    secondSelect.innerHTML = "";
+    var selectedValue = firstSelect.value;
+
+    var option1 = document.createElement("option");
+    option1.value = "Gasoline";
+    option1.text = "Gasoline";
+
+    var option2 = document.createElement("option");
+    option2.value = "Diesel";
+    option2.text = "Diesel";
+
+    var option3 = document.createElement("option");
+    option3.value = "Electric";
+    option3.text = "Electric";
+    
+    var option4 = document.createElement("option");
+    option4.value = "Hybrid";
+    option4.text = "Hybrid";
+
+    var option5 = document.createElement("option");
+    option5.value = "Jet Fuel";
+    option5.text = "Jet Fuel";
+
+    var option6 = document.createElement("option");
+    option6.value = "No Fossil Fuel";
+    option6.text = "No Fossil Fuel";
+
+
+    if (selectedValue === "car") {
+        secondSelect.add(option1);
+        secondSelect.add(option2);
+        secondSelect.add(option3);
+        secondSelect.add(option4);
+    }
+    else if (selectedValue === "plane") {
+        secondSelect.add(option5);
+    }
+    else if (selectedValue === "plane-up") {
+        secondSelect.add(option5);
+    }
+    else if (selectedValue === "bus") {
+        secondSelect.add(option2);
+        secondSelect.add(option3);
+    }
+    else if (selectedValue === "train-tram") {
+        secondSelect.add(option3);
+    }
+    else if (selectedValue === "motorcycle") {
+        secondSelect.add(option1);
+    }
+    else if (selectedValue === "train") {
+        secondSelect.add(option3);
+        secondSelect.add(option2);
+    }
+    else if (selectedValue === "ferry") {
+        secondSelect.add(option2);
+    }
+    else if (selectedValue === "bicycle") {
+        secondSelect.add(option6);
+    }
+    else if (selectedValue === "person-walking") {
+        secondSelect.add(option6);
+    }
+};
+
+firstSelect.addEventListener("change", populateSecondSelect);
+populateSecondSelect();
+
+

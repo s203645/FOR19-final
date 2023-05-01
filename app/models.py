@@ -1,6 +1,7 @@
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from flask_login import UserMixin
+from app import bcrypt
 
 db = SQLAlchemy()
 
@@ -38,7 +39,7 @@ class User(db.Model, UserMixin):
     def valid_login(email, password):
         users = User.query.all()
         for user in users:
-            if user.email == email and user.password == password:
+            if user.email == email and bcrypt.check_password_hash(user.password, password):
                 return user
         return None
     
