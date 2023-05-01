@@ -73,10 +73,23 @@
 }
 
 .btn_carbon_app_new_entry_main,
-.box .btn,
-#filter_all,
-#filter_individual, #filter_date {
+.box .btn, #filter_date {
   background-color: #628354;
+  border-radius: 3px;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: black;
+  margin: 4px 2px;
+  text-align: center;
+  border: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+#filter_all,
+#filter_individual {
   border-radius: 3px;
   padding: 10px 20px;
   text-decoration: none;
@@ -107,15 +120,15 @@
     inset 0 0 8px rgba(0, 0, 0, 0.4);
 }
 
-#filter_all:focus,
+/* #filter_all:focus,
 #filter_individual:focus,
 #filter_all:active,
 #filter_individual:active {
   transform: translateY(4px);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2),
     inset 0 0 8px rgba(0, 0, 0, 0.4);
-  background-color: #557249;
-}
+  background-color: #557249; */
+/* } */
 
 .section_header .container_filter {
   display: flex;

@@ -21,6 +21,8 @@ filter_individual.addEventListener('click', (event) => {
     filter_individual.classList = "btn btn-success";
     filter_all.value = "inactive";
     filter_all.classList = "btn btn-secondary";
+    filter_individual.style = "background-color: #628354;"
+    filter_all.style = "background-color: #9395935e; color: grey; box-shadow: none;"
 });
 
 filter_all.addEventListener('click', (event) => {
@@ -29,6 +31,8 @@ filter_all.addEventListener('click', (event) => {
     filter_all.classList = "btn btn-success";
     filter_individual.value = "inactive";
     filter_individual.classList = "btn btn-secondary";
+    filter_all.style = "background-color: #628354;"
+    filter_individual.style = "background-color: #9395935e; color: grey; box-shadow: none;"
 
 });
 
@@ -162,7 +166,7 @@ const over_time_emissions = (arg, start, end) =>{
                         labels: data.labels,
                         datasets: [
                             {
-                            label: "Individual Emissions",                           
+                            label: "Emissions",                           
                             data: data.values,
                             fill: false,
                             borderColor: '#d53e4f',
@@ -239,7 +243,7 @@ const over_time_kms = (arg, start, end) => {
                     labels: data.labels,
                     datasets: [
                         {
-                        label: "Individual Kilometers",                            
+                        label: "Kilometers",                            
                         data: data.values,
                         fill: false,
                         borderColor: '#5e4fa2',
