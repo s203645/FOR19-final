@@ -260,7 +260,8 @@ const delete_row = (row) => {
         },
         success: function (response) {
             console.log(response);
-            get_anf_fill_table();
+            let status = document.getElementById('filter_individual').value;
+            if (status === 'active') { get_anf_fill_table(0); } else { get_anf_fill_table(1); }
             $('#table_confirmation').text("Entry deleted successfully").show();
             setTimeout(function() { $("#table_confirmation").hide(); }, 3000);
         }
