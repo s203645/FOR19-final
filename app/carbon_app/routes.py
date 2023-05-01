@@ -144,7 +144,7 @@ def my_data(arg, key):
             return jsonify(over_time_kms)
         elif int(arg) == 5:
             data = db.session.query(Transport.user_id, Transport.date, Transport.kms, Transport.transport, Transport.fuel, Transport.co2, Transport.ch4, Transport.total, Transport.id). \
-            order_by(Transport.date.desc()).limit(10)
+            order_by(Transport.date.desc()).all()
             list_data = []
             for i in data:
                 list_data.append((i[0], str(i[1]), i[2], i[3], i[4], i[5], i[6], i[7], i[8]))
