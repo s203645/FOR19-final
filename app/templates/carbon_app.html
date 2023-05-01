@@ -68,8 +68,11 @@
           <div class="container">
             <div class="home">
               <h2 class="text">My Data</h2>
-              <button type="button" value="active" class="btn btn-primary" id="filter_individual"> Individual </button>
-              <button type="button" value="" class="btn btn-primary" id="filter_all"> All </button>
+              <button type="button" value="active" class="btn btn-success" id="filter_individual"> Individual </button>
+              <button type="button" value="" class="btn btn-secondary" id="filter_all"> All </button>
+              <input type="date" name="filter_start" id="filter_start"> 
+              <input type="date" name="filter_end" id="filter_end">
+              <button type="button" value="" class="btn btn-success" id="filter_date"> Update timerange </button>
             </div>
             <div class="charts">
               <div class="box">
@@ -107,16 +110,12 @@
                           <th> Kilometres</th>
                           <th> Transport</th>
                           <th> Fuel</th>
-                          <th> Co2</th>
-                          <th> Ch4</th>
-                          <th> Total</th>
+                          <th> Co2e</th>
                           <th> Delete</th>
                       </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <th> Test</th>
-                      <th> Test</th>
                       <th> Test</th>
                       <th> Test</th>
                       <th> Test</th>

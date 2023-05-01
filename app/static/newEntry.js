@@ -3,6 +3,7 @@ const transport_icon = document.getElementById('transport_icon');
 const newEntryButton = document.getElementById('newEntryButton');
 const filter_individual = document.getElementById('filter_individual');
 const filter_all = document.getElementById('filter_all');
+const filter_date = document.getElementById('filter_date');
 
 
 transport.addEventListener('change', (event) => {
@@ -17,14 +18,42 @@ newEntryButton.addEventListener('click', (event) => {
 filter_individual.addEventListener('click', (event) => {
     refresh(0);
     filter_individual.value = "active";
+    filter_individual.classList = "btn btn-success";
     filter_all.value = "inactive";
+    filter_all.classList = "btn btn-secondary";
 });
 
 filter_all.addEventListener('click', (event) => {
     refresh(1);
     filter_all.value = "active";
+    filter_all.classList = "btn btn-success";
     filter_individual.value = "inactive";
+    filter_individual.classList = "btn btn-secondary";
 
+});
+
+filter_date.addEventListener('click', (event) => {
+    let end = document.getElementById('filter_start').value;
+    let start = document.getElementById('filter_end').value;
+    let status = document.getElementById('filter_individual').value;
+    console.log(start, end, status)
+    if (status === 'active') {
+        if (start === '' || end === '') {
+            refresh(0);
+        }
+        else {
+            refresh(0, start, end);
+        }
+    }
+    else {
+        if (start === '' || end === '') {
+            refresh(1);
+        }
+        else {
+            refresh(1, start, end);
+        }
+    }
+  
 });
 
 const newEntry = () => {
@@ -69,11 +98,11 @@ $(document).ready(function () {
     get_anf_fill_table(0);
 });
 
-const emissions_by_transport = (arg) =>{
+const emissions_by_transport = (arg, start, date) =>{
     const ctx = document.getElementById('emissions_by_transport').getContext('2d');
     let chart = null;
 
-    fetch('/my_data/1/' + arg)
+    fetch('/my_data/1/' + arg + '/' + start + '/' + date)
         .then(response => response.json())
         .then(data => {
             chart = new Chart(ctx, {
@@ -119,10 +148,10 @@ const emissions_by_transport = (arg) =>{
         });
 }
 
-const over_time_emissions = (arg) =>{
+const over_time_emissions = (arg, start, end) =>{
     const ctx = document.getElementById('over_time_emissions').getContext('2d');
     let chart = null;
-    fetch('/my_data/2/' +arg)  
+    fetch('/my_data/2/' +arg + '/' + start + '/' + end)  
         .then(response => response.json())
         .then(data => {
             console.log(data)
@@ -149,9 +178,9 @@ const over_time_emissions = (arg) =>{
         });
 }
 
-const kms_transport_data = (arg) => { 
+const kms_transport_data = (arg, start, end) => { 
     const kms_by_transport = document.getElementById('kms_by_transport').getContext('2d');
-    fetch('/my_data/3/' + arg)
+    fetch('/my_data/3/' + arg + '/' + start + '/' + end)
         .then(response => response.json())
         .then(data => {
              new Chart(kms_by_transport, {
@@ -197,9 +226,9 @@ const kms_transport_data = (arg) => {
         });
 }
 
-const over_time_kms = (arg) => {
+const over_time_kms = (arg, start, end) => {
     const over_time_kms = document.getElementById("over_time_kms").getContext("2d");
-    fetch('/my_data/4/' + arg)
+    fetch('/my_data/4/' + arg + '/' + start + '/' + end)
         .then(response => response.json())
         .then(data => {
             new Chart(over_time_kms, {
@@ -229,8 +258,8 @@ var del_button = document.createElement("button");
 del_button.classList.add("btn", "btn-danger", "btn-sm");
 del_button.innerHTML = "Delete";
 
-const get_anf_fill_table = (arg) => {
-    fetch('/my_data/5/' + arg)
+const get_anf_fill_table = (arg, start, end) => {
+    fetch('/my_data/5/' + arg + '/' + start + '/' + end)
         .then(response => response.json())
         .then(data => {
             console.log(data)
@@ -239,7 +268,7 @@ const get_anf_fill_table = (arg) => {
             for (let i = 0; i < data.length; i++) {
                 console.log(i)
                 console.log(data[i])
-              $('#entry_table tbody:last-child').append(`<tr> <td>` + data[i][0] + `</td> <td>` + data[i][1] +` </td> <td>` + data[i][2] + `</td> <td>` + data[i][3] + `</td> <td>` + data[i][4] + `</td> <td>` + data[i][5] + `</td> <td>` + data[i][6] + `</td>  <td>` + data[i][7] + `</td> <td> <button class="btn btn-danger" onclick="delete_row(`+data[i][8]+`)"> Delete </button> </td> </tr>`);
+              $('#entry_table tbody:last-child').append(`<tr> <td>` + data[i][0] + `</td> <td>` + data[i][1] +` </td> <td>` + data[i][2] + `</td> <td>` + data[i][3] + `</td> <td>` + data[i][4] + `</td> <td>` + data[i][5] + `</td> <td> <button class="btn btn-danger" onclick="delete_row(`+data[i][6]+`)"> Delete </button> </td> </tr>`);
             }
             $('#entry_table').DataTable( {
                 destroy:true,  
@@ -261,7 +290,25 @@ const delete_row = (row) => {
         success: function (response) {
             console.log(response);
             let status = document.getElementById('filter_individual').value;
-            if (status === 'active') { get_anf_fill_table(0); } else { get_anf_fill_table(1); }
+            let end = document.getElementById('filter_start').value;
+            let start = document.getElementById('filter_end').value;
+            if (status === 'active') {
+                if (start === '' || end === '') {
+                    refresh(0);
+                }
+                else {
+                    refresh(0, start, end);
+                }
+            }
+            else {
+                if (start === '' || end === '') {
+                    refresh(1);
+                }
+                else {
+                    refresh(1, start, end);
+                }
+            }
+          
             $('#table_confirmation').text("Entry deleted successfully").show();
             setTimeout(function() { $("#table_confirmation").hide(); }, 3000);
         }
@@ -269,12 +316,12 @@ const delete_row = (row) => {
 }
 
 
-const refresh = (arg) => {
-    emissions_by_transport(arg);
-    over_time_emissions(arg);
-    kms_transport_data(arg);
-    over_time_kms(arg);
-    get_anf_fill_table(arg);
+const refresh = (arg, start, end) => {
+    emissions_by_transport(arg, start, end);
+    over_time_emissions(arg, start, end);
+    kms_transport_data(arg, start, end);
+    over_time_kms(arg, start, end);
+    get_anf_fill_table(arg, start, end);
 }
 
 
