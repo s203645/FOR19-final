@@ -4,8 +4,6 @@
 }
 .header_home {
   display: flex;
-  color: rgb(109, 107, 107);
-  background-color: #9395935e;
 }
 
 .home .title:nth-of-type(1) {
