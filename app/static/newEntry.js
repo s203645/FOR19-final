@@ -1,6 +1,9 @@
 const transport = document.getElementById('transport');
 const transport_icon = document.getElementById('transport_icon');
 const newEntryButton = document.getElementById('newEntryButton');
+const filter_individual = document.getElementById('filter_individual');
+const filter_all = document.getElementById('filter_all');
+
 
 transport.addEventListener('change', (event) => {
     console.log(event.target.value);
@@ -9,6 +12,19 @@ transport.addEventListener('change', (event) => {
 
 newEntryButton.addEventListener('click', (event) => {
     newEntry();
+});
+
+filter_individual.addEventListener('click', (event) => {
+    refresh(0);
+    filter_individual.value = "active";
+    filter_all.value = "inactive";
+});
+
+filter_all.addEventListener('click', (event) => {
+    refresh(1);
+    filter_all.value = "active";
+    filter_individual.value = "inactive";
+
 });
 
 const newEntry = () => {
@@ -24,7 +40,8 @@ const newEntry = () => {
         success: function (response) {
             console.log(response)
             if (response.error === undefined) {
-                refresh();
+                let status = document.getElementById('filter_individual').value;
+                if (status === 'active') { refresh(0); } else { refresh(1); }
                 document.getElementById('transport').value = 'default';
                 document.getElementById('fuel').value = 'default';
                 document.getElementById('kms').value = '';
@@ -45,18 +62,18 @@ Chart.scaleService.updateScaleDefaults('linear', {
 });
 
 $(document).ready(function () {
-    emissions_by_transport();
-    over_time_emissions();
-    kms_transport_data();
-    over_time_kms();
-    get_anf_fill_table();
+    emissions_by_transport(0);
+    over_time_emissions(0);
+    kms_transport_data(0);
+    over_time_kms(0);
+    get_anf_fill_table(0);
 });
 
-const emissions_by_transport = () =>{
+const emissions_by_transport = (arg) =>{
     const ctx = document.getElementById('emissions_by_transport').getContext('2d');
     let chart = null;
 
-    fetch('/my_data/1')
+    fetch('/my_data/1/' + arg)
         .then(response => response.json())
         .then(data => {
             chart = new Chart(ctx, {
@@ -102,10 +119,10 @@ const emissions_by_transport = () =>{
         });
 }
 
-const over_time_emissions = () =>{
+const over_time_emissions = (arg) =>{
     const ctx = document.getElementById('over_time_emissions').getContext('2d');
     let chart = null;
-    fetch('/my_data/2')  
+    fetch('/my_data/2/' +arg)  
         .then(response => response.json())
         .then(data => {
             console.log(data)
@@ -132,9 +149,9 @@ const over_time_emissions = () =>{
         });
 }
 
-const kms_transport_data = () => { 
+const kms_transport_data = (arg) => { 
     const kms_by_transport = document.getElementById('kms_by_transport').getContext('2d');
-    fetch('/my_data/3')
+    fetch('/my_data/3/' + arg)
         .then(response => response.json())
         .then(data => {
              new Chart(kms_by_transport, {
@@ -180,9 +197,9 @@ const kms_transport_data = () => {
         });
 }
 
-const over_time_kms = () => {
+const over_time_kms = (arg) => {
     const over_time_kms = document.getElementById("over_time_kms").getContext("2d");
-    fetch('/my_data/4')
+    fetch('/my_data/4/' + arg)
         .then(response => response.json())
         .then(data => {
             new Chart(over_time_kms, {
@@ -212,8 +229,8 @@ var del_button = document.createElement("button");
 del_button.classList.add("btn", "btn-danger", "btn-sm");
 del_button.innerHTML = "Delete";
 
-const get_anf_fill_table = () => {
-    fetch('/my_data/5')
+const get_anf_fill_table = (arg) => {
+    fetch('/my_data/5/' + arg)
         .then(response => response.json())
         .then(data => {
             console.log(data)
@@ -246,12 +263,12 @@ const delete_row = (row) => {
 }
 
 
-const refresh = () => {
-    emissions_by_transport();
-    over_time_emissions();
-    kms_transport_data();
-    over_time_kms();
-    get_anf_fill_table();
+const refresh = (arg) => {
+    emissions_by_transport(arg);
+    over_time_emissions(arg);
+    kms_transport_data(arg);
+    over_time_kms(arg);
+    get_anf_fill_table(arg);
 }
 
 
