@@ -4,6 +4,7 @@
 }
 .header_home {
   display: flex;
+
 }
 
 .home .title:nth-of-type(1) {
@@ -93,3 +94,13 @@
   color: black;
   text-decoration: none;
 }
+
+
+
+  /* Media Queries */
+
+  @media (max-width: 768px) {
+    .header_home {
+      flex-direction: column;
+    }
+  }

@@ -68,11 +68,14 @@
           <div class="container">
             <div class="home">
               <h2 class="text">My Data</h2>
-              <button type="button" value="active" class="btn btn-success" id="filter_individual"> Individual </button>
-              <button type="button" value="" class="btn btn-secondary" id="filter_all"> All </button>
-              <input type="date" name="filter_start" id="filter_start"> 
-              <input type="date" name="filter_end" id="filter_end">
-              <button type="button" value="" class="btn btn-success" id="filter_date"> Update timerange </button>
+                <div class="container_filter"></div>
+                  <p>Filter by:</p>
+                  <button type="button" value="active" class="btn btn-success" id="filter_individual"> Only me </button>
+                  <button type="button" value="" class="btn btn-secondary" id="filter_all"> Every employee </button>
+                  <input type="date" name="filter_start" id="filter_start"> 
+                  <input type="date" name="filter_end" id="filter_end">
+                  <button type="button" value="" class="btn btn-success" id="filter_date"> Update timerange </button>
+                </div>
             </div>
             <div class="charts">
               <div class="box">
