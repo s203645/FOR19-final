@@ -17,8 +17,7 @@
 }
 
 /* Formulas */
-.section_formulas,
-.section_new_entries {
+.section_formulas {
   background-color: #f4f7f1;
   min-height: 100%;
   position: relative;
@@ -91,9 +90,17 @@
 
 /* Media Queries */
 
-@media (max-width: 600px) {
+@media (max-width: 500px) {
   .formulas {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    display: flex;
+    flex-direction: column;
   }
+
+  .box-formula {
+    margin: 0;
+  }
+  .section_formulas {
+    padding: 0px;
+  }
+  
 }
