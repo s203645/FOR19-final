@@ -34,8 +34,28 @@
       <div class="home">
         <div class="header_home">
             <div class="box box-left">
-                <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut tenetur soluta amet, ipsum, provident possimus quo at consequuntur temporibus eius cupiditate. Nostrum aut numquam impedit doloremque quo laborum eaque rerum provident sed est incidunt dolore libero, at distinctio tenetur dicta. Expedita necessitatibus est, illo excepturi dolore fugit animi maiores sequi.
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda itaque impedit libero et mollitia pariatur rerum quibusdam veritatis beatae? Itaque necessitatibus doloribus ab porro totam ullam repellat tenetur fugit maiores!
+                <p> 
+                  Welcome to our Carbon App! Our app is designed to be a tool that can help individuals and organizations identify their main sources of carbon emissions 
+                  and take action in order to effectively reduce their environmental footprint. 
+                  The features of our application are currently limited to calculating how much a person's travel habits emits of carbon dioxide equivalents (\(CO_{2}e\)). 
+                </p>
+                  
+                  <h5 style="text-align: left;">Our team</h5>
+                  <p>
+                  In the section below, you can get to know our talented team of developers! Learn about their unique backgrounds, explore their curricula, and check out their LinkedIn and Github profiles to get a deeper understanding of their skills and expertise.
+                  </p>
+                  
+                  <h5 style="text-align: left;">Methodology</h5>
+                  <p>
+                  If you are interested in delving deeper into the technical aspects of our application, you can learn more about the methodology and data sources we have used on the 'Methodology' page. 
+                  </p>
+                  
+                  <h5 style="text-align: left;">Carbon App Calculator</h5>
+                  <p>
+                  If you want to learn more about the environmental impact of your travel habits, you can check out our Carbon App Calculator. Here you will find information about the carbon footprint of different modes of transportation, and you can calculate your own carbon footprint based on your travel habits.
+                
+                  <br><br>
+                  We hope you enjoy our app and that it will inspire you to make more sustainable choices in your daily life!
                 </p>
                 <div class="container-buttons" id="home_login_field">
                   <div class="button-container">
@@ -63,7 +83,7 @@
   <section class="section_developers">
     <div class="container">
       <div class="developers d_team">
-        <h1 style="text-align: center;"> Our Team</h1>
+        <h1 style="text-align: center;"> Meet our exceptional team!</h1>
         <p>
           Our team consists of 5 developers, who are all students at NHH - Norwegian School of Economics. 
           Our shared passion for economics and IT has fueled our excitement about combining 
@@ -73,20 +93,18 @@
           Our team is deeply committed to developing a solution that will promote sustainable practices and encourage 
           both individuals and businesses to make environmentally friendly choices in their daily lives. We recognize the pressing need for 
           action to address the challenges facing our planet, and we believe that our application can be a catalyst for positive change.
-
-
         </p>
       </div>
       <div class="developers">  <!-- Creats a list with name, and filename off photo-->
         {% set dev_team = [
-          ("Christian Eriksen", 'Christian.jpg', 'https://github.com/Eriksen1110/FOR19'), 
-          ('Sara Birkeland', 'Sara.jpg', 'https://github.com/s203645/FOR19-final'), 
-          ('Richard Myrdal', 'Richard.jpg', 'https://github.com/jonkringeland'),
-          ('Per Ole Lande', 'Per.jpg', 'https://github.com/perolelande/for19'),
-          ('Jon Kringeland', 'Jon.jpg','https://github.com/jonkringeland')]
+          ("Christian Eriksen", 'Christian.jpg', 'https://github.com/Eriksen1110/FOR19', 'https://www.linkedin.com/in/christian-boe-eriksen/'), 
+          ('Sara Birkeland', 'Sara.jpg', 'https://github.com/s203645/FOR19-final', 'https://www.linkedin.com/in/sara-birkeland/'), 
+          ('Richard Myrdal', 'Richard.jpg', 'https://github.com/jonkringeland', 'https://www.linkedin.com/in/richard-myrdal-44a180230/'),
+          ('Per Ole Lande', 'Per.jpg', 'https://github.com/perolelande/for19', 'https://www.linkedin.com/in/per-ole-lande-229311112/'),
+          ('Jon Kringeland', 'Jon.jpg','https://github.com/jonkringeland', '/404')]
           -%}
 
-          {% for name, path, url in dev_team %}
+          {% for name, path, url, linkedin in dev_team %}
           <div class="box">
             <img class="box-image" src="static/images/{{path}}" alt="" style="border-radius: 50%; width:200px;">
             <h3> {{ name }}</h3>
@@ -133,6 +151,11 @@
         
           <div class="container_buttons_developers">
             <a class="btn_developers" data-bs-toggle="modal" data-bs-target="#cv_Modal" data-bs-whatever="CV_{{name}}.pdf"> Curriculum </a> <!-- bs-target links to the id of the modal-->
+          </div>
+          <div class="container_buttons_developers">
+            <a class="btn_developers" href="{{linkedin}}" target="_blank"> <!-- Using _blank to open a new tab-->
+              LinkedIn
+            </a>
           </div>
           <div class="container_buttons_developers">
             <a class="btn_developers" href="{{url}}" target="_blank"> <!-- Using _blank to open a new tab-->

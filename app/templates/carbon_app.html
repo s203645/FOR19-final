@@ -21,8 +21,13 @@
             <div class="home">
                 <div class="header_home">
                     <div class="box">
-                      <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut tenetur soluta amet, ipsum, provident possimus quo at consequuntur temporibus eius cupiditate. Nostrum aut numquam impedit doloremque quo laborum eaque rerum provident sed est incidunt dolore libero, at distinctio tenetur dicta. Expedita necessitatibus est, illo excepturi dolore fugit animi maiores sequi.
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda itaque impedit libero et mollitia pariatur rerum quibusdam veritatis beatae? Itaque necessitatibus doloribus ab porro totam ullam repellat tenetur fugit maiores!
+                      <p> 
+                        Welcome to our Carbon App Calculator! To get started, simply click the 'New Entry' button and enter your travel history. Our 
+                        app will provide both a visual and numerical breakdown of your travel emissions. You can filter your entries by date and choose 
+                        whether to view only your own entries or all entries from your organization. To exclude a mode of transport, simply click on the 
+                        corresponding option beside the pie charts. If you need to delete an entry, scroll down to the table at the bottom of the page 
+                        and click the 'Delete' button beside the entry you wish to remove. The table also allows you to filter your entries by for example date, 
+                        number of kilometers, or mode of transport. Additionally, you can use the search bar to find a specific entry.
                       </p>
                       <a href="{{url_for('methodology.methodology_m')}}" class="btn" style="color: black; text-decoration: none;">Methodology</a>
                      
@@ -49,43 +54,41 @@
         </div>
       </section> 
 
-      <section class="section_new_entries">
-        <div class="container">
-          <div class="developers d_team">
-            <h2 class="text" style="text-align: center;"> New entries</h2>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum quo recusandae sed praesentium corporis necessitatibus facilis et eveniet, hic illo! Assumenda modi quasi dolores, dicta velit laudantium magni nam quia laborum nostrum fuga eveniet, maxime maiores voluptates doloribus pariatur omnis?
-            </p>
-            <div class="section_container_buttons_carbon_app_new_entry_main">
-              <a class="btn_carbon_app_new_entry_main" data-bs-toggle="modal" data-bs-target="#new_entry"> New Entry </a> <!-- bs-target links to the id of the modal-->
-            </div> 
-          </div>
-        </section>
-
 
       
         <section class="section_header">
           <div class="container">
             <div class="home">
               <h2 class="text">My Data</h2>
+              <div class="section_container_buttons_carbon_app_new_entry_main">
+                <a class="btn_carbon_app_new_entry_main" data-bs-toggle="modal" data-bs-target="#new_entry"> New Entry </a> <!-- bs-target links to the id of the modal-->
+              </div> 
                 <div class="container_filter">
                   <div class="box_employee_filter">
                   <p>Filter by:</p>
+                  <div class="box_employee_filter_buttons">
                   <button type="button" value="active" class="btn btn-success" style="background-color: #628354;" id="filter_individual"> Only me </button>
                   <button type="button" value="" class="btn btn-secondary" style="background-color: #9395935e; color: grey; box-shadow: none;" id="filter_all"> Every employee </button> 
                   </div>
                 </div>
-                <div class="container_filter">
                   <div class="box_date_filter">
-                    <p>From: </p>
+                  <div class="box_date_filter_from">
+                    <p>
+                      From:
+                    </p>
                   <input type="date" name="filter_start" id="filter_start"> 
+                  </div>
+                  <div class="box_date_filter_to">
                   <p>
                     To:
                   </p>
                   <input type="date" name="filter_end" id="filter_end">
+                  </div>
+                  <div class="box_update_timerange">
                   <button type="button" value="" class="btn btn-success" id="filter_date"> Update timerange </button>
                   </div>
                 </div>
+              </div>
             </div>
           </div>
         </section>
@@ -114,6 +117,10 @@
           </div>
         </section> 
 
+        <div class="section_container_buttons_carbon_app_new_entry_main">
+          <a class="btn_carbon_app_new_entry_table" data-bs-toggle="modal" data-bs-target="#new_entry"> New Entry </a> <!-- bs-target links to the id of the modal-->
+        </div> 
+
         <section class="table_main">
           <div class="container">
               <div id="table_confirmation" class="alert alert-success" style="display: none;" > </div>
@@ -122,24 +129,14 @@
                       <tr>
                           <th> User</th>
                           <th> Date</th>
-                          <th> Kilometres</th>
+                          <th> Kilometers</th>
                           <th> Transport</th>
                           <th> Fuel</th>
-                          <th> Co2e (kg)</th>
+                          <th> \(Co_{2}e\ (kg)\)</th>
                           <th> Delete</th>
                       </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <th> Test</th>
-                      <th> Test</th>
-                      <th> Test</th>
-                      <th> Test</th>
-                      <th> Test</th>
-                      <th> Test</th>
-                      <th> Test</th>
-                    </tr>
-                     
                   </tbody>
               </table>       
               </div>

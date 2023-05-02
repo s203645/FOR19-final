@@ -166,7 +166,7 @@ const over_time_emissions = (arg, start, end) =>{
                         labels: data.labels,
                         datasets: [
                             {
-                            label: "Emissions",                           
+                            label: "Carbon emissions (filtered by date)",                           
                             data: data.values,
                             fill: false,
                             borderColor: '#d53e4f',
@@ -243,7 +243,7 @@ const over_time_kms = (arg, start, end) => {
                     labels: data.labels,
                     datasets: [
                         {
-                        label: "Kilometers",                            
+                        label: "Kilometers traveled (filtered by date)",                            
                         data: data.values,
                         fill: false,
                         borderColor: '#5e4fa2',
