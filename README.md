@@ -1,5 +1,7 @@
 # This is an app developed as part of a course at NHH (FOR19)
 
+The app earned us the highest grade in the course. 
+
 ```
 Link to the website: https://forwardedu.org/green_digitalization_course/NHH/2023/group1/home
 ```
